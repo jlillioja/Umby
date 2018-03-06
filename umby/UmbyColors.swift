@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
-struct UmbyColors {
-    static let blue = UIColor(red: 102/255, green: 148/255, blue: 247/255, alpha: 1.0)
+struct UmbyStyle {
+    struct colors {
+        static let blue = UIColor(r: 102, g: 148, b: 247)
+        static let white = UIColor(r: 255, g: 255, b: 255)
+        static let grey = UIColor(r: 200, g: 200, b: 200)
+    }
+    
+    static let smallCornerRadius: CGFloat = 5
 }
+
+typealias UmbyColors = UmbyStyle.colors

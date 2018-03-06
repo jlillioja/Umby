@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F0204DDD4B00A073DA /* AppDelegate.swift */; };
-		163CD9F3204DDD4B00A073DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F2204DDD4B00A073DA /* ViewController.swift */; };
+		163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */; };
 		163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */; };
 		163CD9FB204DDD4B00A073DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 163CD9FA204DDD4B00A073DA /* Assets.xcassets */; };
 		163CDA06204DE13C00A073DA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA05204DE13C00A073DA /* UIView+.swift */; };
@@ -18,12 +18,16 @@
 		163CDA0F204DECC500A073DA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* NavigationController.swift */; };
 		163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */; };
 		16666CF8204DF94B00E43007 /* UmbyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16666CF7204DF94B00E43007 /* UmbyColors.swift */; };
+		169647C8204F11020025EDB4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C7204F11020025EDB4 /* UIColor+.swift */; };
+		169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */; };
+		169647CC204F24980025EDB4 /* FeelingSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */; };
+		169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		163CD9ED204DDD4B00A073DA /* umby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = umby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		163CD9F0204DDD4B00A073DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		163CD9F2204DDD4B00A073DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryViewController.swift; sourceTree = "<group>"; };
 		163CD9F8204DDD4B00A073DA /* umby.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = umby.xcdatamodel; sourceTree = "<group>"; };
 		163CD9FA204DDD4B00A073DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		163CD9FF204DDD4B00A073DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +38,10 @@
 		163CDA0E204DECC500A073DA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectorViewController.swift; sourceTree = "<group>"; };
 		16666CF7204DF94B00E43007 /* UmbyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyColors.swift; sourceTree = "<group>"; };
+		169647C7204F11020025EDB4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCell.swift; sourceTree = "<group>"; };
+		169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSelectorViewController.swift; sourceTree = "<group>"; };
+		169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +74,9 @@
 		163CD9EF204DDD4B00A073DA /* umby */ = {
 			isa = PBXGroup;
 			children = (
+				169647CD204F2CA70025EDB4 /* Screens */,
 				163CDA09204DE25000A073DA /* Extensions */,
-				163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */,
 				163CD9F0204DDD4B00A073DA /* AppDelegate.swift */,
-				163CD9F2204DDD4B00A073DA /* ViewController.swift */,
 				163CD9FA204DDD4B00A073DA /* Assets.xcassets */,
 				163CD9FF204DDD4B00A073DA /* Info.plist */,
 				163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */,
@@ -86,8 +93,21 @@
 				163CDA07204DE24500A073DA /* NSLayoutConstraint+.swift */,
 				163CDA0A204DE28400A073DA /* NSObject+.swift */,
 				163CDA0C204DE64600A073DA /* Array+.swift */,
+				169647C7204F11020025EDB4 /* UIColor+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		169647CD204F2CA70025EDB4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */,
+				163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */,
+				169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */,
+				169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */,
+				169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,11 +181,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				163CDA06204DE13C00A073DA /* UIView+.swift in Sources */,
+				169647CC204F24980025EDB4 /* FeelingSelectorViewController.swift in Sources */,
 				163CDA0F204DECC500A073DA /* NavigationController.swift in Sources */,
 				163CDA0B204DE28400A073DA /* NSObject+.swift in Sources */,
 				163CDA08204DE24500A073DA /* NSLayoutConstraint+.swift in Sources */,
+				169647C8204F11020025EDB4 /* UIColor+.swift in Sources */,
 				16666CF8204DF94B00E43007 /* UmbyColors.swift in Sources */,
-				163CD9F3204DDD4B00A073DA /* ViewController.swift in Sources */,
+				163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */,
+				169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */,
+				169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */,
 				163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */,
 				163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */,
 				163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */,

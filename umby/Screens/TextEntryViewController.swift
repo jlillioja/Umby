@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TextEntryViewController: UIViewController {
     
-    var navigationManager: NavigationController?
+    var navigationManager: NavigationManager?
 
     override func loadView() {
         view = UIView()
@@ -20,17 +20,19 @@ class ViewController: UIViewController {
         let label = UILabel().forCustom()
         label.text = "What's going on?"
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = UmbyColors.white
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         view.addSubview(label)
         
         let textBox = UITextView().forCustom()
-        textBox.backgroundColor = .white
+        textBox.backgroundColor = UmbyColors.white
+        textBox.layer.cornerRadius = UmbyStyle.smallCornerRadius
         textBox.font = .systemFont(ofSize: 24.0)
         view.addSubview(textBox)
         
         let nextButton = UIButton().forCustom()
-        nextButton.backgroundColor = .white
+        nextButton.backgroundColor = UmbyColors.white
+        nextButton.layer.cornerRadius = UmbyStyle.smallCornerRadius
         nextButton.setTitle("Next", for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
         nextButton.onTap { [weak self] in
@@ -40,7 +42,7 @@ class ViewController: UIViewController {
         
         let margin: CGFloat = 30.0
         [
-            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 30),
+            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
             label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
             textBox.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
