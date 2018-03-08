@@ -9,49 +9,35 @@
 import Foundation
 import UIKit
 
-class TagSelectorViewController: UIViewController {
-    
-    var navigationManager: NavigationManager?
-    let margin: CGFloat = 30.0
+class TagSelectorViewController: UmbyViewController {
     
     let whoEntries = ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"]
     let whereEntries = ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"]
     
-    let whatTable = UITableView().forCustom()
-    let whoTable = UITableView().forCustom()
+    let whatTable = UmbyTable()
+    let whoTable = UmbyTable()
     
     override func loadView() {
-        view = UIView()
-        view.backgroundColor = UmbyColors.blue
+        super.loadView()
+        
         let layoutGuide = view.safeAreaLayoutGuide
         
-        let label = UILabel().forCustom()
-        label.text = "What are you thinking ?"
-        label.textColor = UmbyColors.white
-        label.font = .systemFont(ofSize: 16.0)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.textAlignment = .center
+        let label = UmbyLabel("What are you thinking?")
         view.addSubview(label)
         let labelConstraints = [
             label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
-            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
             ]
         
-        whoTable.delegate = self
-        whoTable.dataSource = self
-        whoTable.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        whoTable.separatorStyle = .none
+        whoTable.controller = self
         view.addSubview(whoTable)
         let whoTableConstraints = [
             whoTable.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
             whoTable.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
-        ]
+            ]
         
-        whatTable.delegate = self
-        whatTable.dataSource = self
-        whatTable.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        whatTable.separatorStyle = .none
+        whatTable.controller = self
         view.addSubview(whatTable)
         let whatTableConstraints = [
             whatTable.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
@@ -61,46 +47,25 @@ class TagSelectorViewController: UIViewController {
             whatTable.widthAnchor.constraint(equalTo: whoTable.widthAnchor)
         ]
         
-        let customWhoEntry = UITextField().forCustom()
-        customWhoEntry.delegate = self
-        customWhoEntry.borderStyle = .roundedRect
-        let whoAttributedPlaceholder = NSAttributedString(string: "Enter your own", attributes: [
-            NSAttributedStringKey.foregroundColor: UmbyColors.grey
-            ])
-        customWhoEntry.attributedPlaceholder = whoAttributedPlaceholder
-        customWhoEntry.backgroundColor = UmbyColors.white
-        customWhoEntry.layer.cornerRadius = UmbyStyle.smallCornerRadius
+        let customWhoEntry = UmbyTextField(title: "Enter your own", delegate: self)
         view.addSubview(customWhoEntry)
         let customWhoEntryConstraints = [
             customWhoEntry.topAnchor.constraint(equalTo: whoTable.bottomAnchor, constant: margin),
             customWhoEntry.heightAnchor.constraint(equalToConstant: 60),
             customWhoEntry.leadingAnchor.constraint(equalTo: whoTable.leadingAnchor),
             customWhoEntry.trailingAnchor.constraint(equalTo: whoTable.trailingAnchor),
-        ]
+            ]
         
-        let customWhatEntry = UITextField().forCustom()
-        customWhatEntry.delegate = self
-        customWhatEntry.borderStyle = .roundedRect
-        let whereAttributedPlaceholder = NSAttributedString(string: "Enter your own", attributes: [
-            NSAttributedStringKey.foregroundColor: UmbyColors.grey
-            ])
-        customWhatEntry.attributedPlaceholder = whereAttributedPlaceholder
-        customWhatEntry.backgroundColor = UmbyColors.white
-        customWhatEntry.layer.cornerRadius = UmbyStyle.smallCornerRadius
+        let customWhatEntry = UmbyTextField(title: "Enter your own", delegate: self)
         view.addSubview(customWhatEntry)
         let customWhatEntryConstraints = [
             customWhatEntry.topAnchor.constraint(equalTo: whatTable.bottomAnchor, constant: margin),
             customWhatEntry.heightAnchor.constraint(equalToConstant: 60),
             customWhatEntry.leadingAnchor.constraint(equalTo: whatTable.leadingAnchor),
             customWhatEntry.trailingAnchor.constraint(equalTo: whatTable.trailingAnchor),
-        ]
+            ]
         
-        let nextButton = UIButton().forCustom()
-        nextButton.setTitle("NEXT", for: .normal)
-        nextButton.backgroundColor = UmbyColors.white
-        nextButton.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        nextButton.setTitleColor(UmbyColors.blue, for: .normal)
-        nextButton.onTap {
+        let nextButton = UmbyButton(title: "NEXT") {
             self.navigationManager?.navigateToConsiderationSelector()
         }
         view.addSubview(nextButton)
@@ -115,7 +80,7 @@ class TagSelectorViewController: UIViewController {
     }
 }
 
-extension TagSelectorViewController: UITableViewDelegate, UITableViewDataSource {
+extension TagSelectorViewController: UmbyTableViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

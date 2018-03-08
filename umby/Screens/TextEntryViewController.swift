@@ -8,51 +8,44 @@
 
 import UIKit
 
-class TextEntryViewController: UIViewController {
+class TextEntryViewController: UmbyViewController {
     
-    var navigationManager: NavigationManager?
-
     override func loadView() {
-        view = UIView()
-        view.backgroundColor = UmbyColors.blue
+        super.loadView()
+        
         let layoutGuide = view.safeAreaLayoutGuide
         
-        let label = UILabel().forCustom()
-        label.text = "What's going on?"
-        label.textAlignment = .center
-        label.textColor = UmbyColors.white
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        let label = UmbyLabel("What's going on?")
         view.addSubview(label)
+        let labelConstraints = [
+            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
+        ]
         
         let textBox = UITextView().forCustom()
         textBox.backgroundColor = UmbyColors.white
         textBox.layer.cornerRadius = UmbyStyle.smallCornerRadius
         textBox.font = .systemFont(ofSize: 24.0)
         view.addSubview(textBox)
-        
-        let nextButton = UIButton().forCustom()
-        nextButton.backgroundColor = UmbyColors.white
-        nextButton.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        nextButton.setTitle("Next", for: .normal)
-        nextButton.setTitleColor(.black, for: .normal)
-        nextButton.onTap { [weak self] in
-            self?.navigationManager?.navigateToTypeSelector()
-        }
-        view.addSubview(nextButton)
-        
-        let margin: CGFloat = 30.0
-        [
-            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
-            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+        let textBoxConstraints = [
             textBox.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
             textBox.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             textBox.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-            textBox.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -margin),
+        ]
+        
+        let nextButton = UmbyButton(title: "NEXT") {
+            self.navigationManager?.navigateToTypeSelector()
+        }
+        view.addSubview(nextButton)
+        let nextButtonConstraints = [
+            nextButton.topAnchor.constraint(equalTo: textBox.bottomAnchor, constant: margin),
             nextButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             nextButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
             nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
-        ].activate()
+        ]
+        
+        NSLayoutConstraint.activate(labelConstraints+textBoxConstraints+nextButtonConstraints)
     }
     
     override func viewDidLoad() {

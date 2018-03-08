@@ -15,13 +15,25 @@
 		163CDA08204DE24500A073DA /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA07204DE24500A073DA /* NSLayoutConstraint+.swift */; };
 		163CDA0B204DE28400A073DA /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0A204DE28400A073DA /* NSObject+.swift */; };
 		163CDA0D204DE64600A073DA /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0C204DE64600A073DA /* Array+.swift */; };
-		163CDA0F204DECC500A073DA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* NavigationController.swift */; };
+		163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* RootNavigationController.swift */; };
 		163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */; };
-		16666CF8204DF94B00E43007 /* UmbyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16666CF7204DF94B00E43007 /* UmbyColors.swift */; };
+		1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */; };
+		16666CF8204DF94B00E43007 /* UmbyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16666CF7204DF94B00E43007 /* UmbyStyle.swift */; };
 		169647C8204F11020025EDB4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C7204F11020025EDB4 /* UIColor+.swift */; };
 		169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */; };
 		169647CC204F24980025EDB4 /* FeelingSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */; };
 		169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */; };
+		169647D1204F45D80025EDB4 /* ConsiderationSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */; };
+		169647D4204F46820025EDB4 /* UmbyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D3204F46820025EDB4 /* UmbyLabel.swift */; };
+		169647D6204F47990025EDB4 /* UmbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D5204F47990025EDB4 /* UmbyViewController.swift */; };
+		169647D8204F48180025EDB4 /* UmbyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D7204F48180025EDB4 /* UmbyTextField.swift */; };
+		169647DA204F48E70025EDB4 /* UmbyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D9204F48E70025EDB4 /* UmbyButton.swift */; };
+		169647DC204F4A0F0025EDB4 /* UmbyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647DB204F4A0F0025EDB4 /* UmbyTable.swift */; };
+		169647DE204F4E400025EDB4 /* UmbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */; };
+		169647E0204F5B6A0025EDB4 /* SendEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647DF204F5B6A0025EDB4 /* SendEntryViewController.swift */; };
+		169647E2205076510025EDB4 /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E1205076510025EDB4 /* EntryListViewController.swift */; };
+		169647E620507BB60025EDB4 /* UmbyEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */; };
+		169647E92051A73D0025EDB4 /* EntryCreationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E82051A73D0025EDB4 /* EntryCreationNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,13 +47,25 @@
 		163CDA07204DE24500A073DA /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		163CDA0A204DE28400A073DA /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		163CDA0C204DE64600A073DA /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
-		163CDA0E204DECC500A073DA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		163CDA0E204DECC500A073DA /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectorViewController.swift; sourceTree = "<group>"; };
-		16666CF7204DF94B00E43007 /* UmbyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyColors.swift; sourceTree = "<group>"; };
+		1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListNavigationController.swift; sourceTree = "<group>"; };
+		16666CF7204DF94B00E43007 /* UmbyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyStyle.swift; sourceTree = "<group>"; };
 		169647C7204F11020025EDB4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCell.swift; sourceTree = "<group>"; };
 		169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSelectorViewController.swift; sourceTree = "<group>"; };
 		169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorViewController.swift; sourceTree = "<group>"; };
+		169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsiderationSelectorViewController.swift; sourceTree = "<group>"; };
+		169647D3204F46820025EDB4 /* UmbyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyLabel.swift; sourceTree = "<group>"; };
+		169647D5204F47990025EDB4 /* UmbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyViewController.swift; sourceTree = "<group>"; };
+		169647D7204F48180025EDB4 /* UmbyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyTextField.swift; sourceTree = "<group>"; };
+		169647D9204F48E70025EDB4 /* UmbyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyButton.swift; sourceTree = "<group>"; };
+		169647DB204F4A0F0025EDB4 /* UmbyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyTable.swift; sourceTree = "<group>"; };
+		169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyTableViewController.swift; sourceTree = "<group>"; };
+		169647DF204F5B6A0025EDB4 /* SendEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEntryViewController.swift; sourceTree = "<group>"; };
+		169647E1205076510025EDB4 /* EntryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
+		169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyEntryTableViewCell.swift; sourceTree = "<group>"; };
+		169647E82051A73D0025EDB4 /* EntryCreationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCreationNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +98,14 @@
 		163CD9EF204DDD4B00A073DA /* umby */ = {
 			isa = PBXGroup;
 			children = (
+				169647E72051A6F40025EDB4 /* Navigation */,
+				169647D2204F465E0025EDB4 /* Style */,
 				169647CD204F2CA70025EDB4 /* Screens */,
 				163CDA09204DE25000A073DA /* Extensions */,
 				163CD9F0204DDD4B00A073DA /* AppDelegate.swift */,
 				163CD9FA204DDD4B00A073DA /* Assets.xcassets */,
 				163CD9FF204DDD4B00A073DA /* Info.plist */,
 				163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */,
-				163CDA0E204DECC500A073DA /* NavigationController.swift */,
-				16666CF7204DF94B00E43007 /* UmbyColors.swift */,
 			);
 			path = umby;
 			sourceTree = "<group>";
@@ -101,13 +125,41 @@
 		169647CD204F2CA70025EDB4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */,
 				163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */,
+				163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */,
 				169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */,
 				169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */,
 				169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */,
+				169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */,
+				169647DF204F5B6A0025EDB4 /* SendEntryViewController.swift */,
+				169647E1205076510025EDB4 /* EntryListViewController.swift */,
+				169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		169647D2204F465E0025EDB4 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				16666CF7204DF94B00E43007 /* UmbyStyle.swift */,
+				169647D3204F46820025EDB4 /* UmbyLabel.swift */,
+				169647D5204F47990025EDB4 /* UmbyViewController.swift */,
+				169647D7204F48180025EDB4 /* UmbyTextField.swift */,
+				169647D9204F48E70025EDB4 /* UmbyButton.swift */,
+				169647DB204F4A0F0025EDB4 /* UmbyTable.swift */,
+				169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		169647E72051A6F40025EDB4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				163CDA0E204DECC500A073DA /* RootNavigationController.swift */,
+				169647E82051A73D0025EDB4 /* EntryCreationNavigationController.swift */,
+				1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,18 +232,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				169647DA204F48E70025EDB4 /* UmbyButton.swift in Sources */,
+				169647E2205076510025EDB4 /* EntryListViewController.swift in Sources */,
+				169647E0204F5B6A0025EDB4 /* SendEntryViewController.swift in Sources */,
+				169647D8204F48180025EDB4 /* UmbyTextField.swift in Sources */,
 				163CDA06204DE13C00A073DA /* UIView+.swift in Sources */,
+				169647DC204F4A0F0025EDB4 /* UmbyTable.swift in Sources */,
+				169647DE204F4E400025EDB4 /* UmbyTableViewController.swift in Sources */,
 				169647CC204F24980025EDB4 /* FeelingSelectorViewController.swift in Sources */,
-				163CDA0F204DECC500A073DA /* NavigationController.swift in Sources */,
+				163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */,
+				169647E620507BB60025EDB4 /* UmbyEntryTableViewCell.swift in Sources */,
+				1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */,
 				163CDA0B204DE28400A073DA /* NSObject+.swift in Sources */,
+				169647E92051A73D0025EDB4 /* EntryCreationNavigationController.swift in Sources */,
 				163CDA08204DE24500A073DA /* NSLayoutConstraint+.swift in Sources */,
 				169647C8204F11020025EDB4 /* UIColor+.swift in Sources */,
-				16666CF8204DF94B00E43007 /* UmbyColors.swift in Sources */,
+				16666CF8204DF94B00E43007 /* UmbyStyle.swift in Sources */,
+				169647D4204F46820025EDB4 /* UmbyLabel.swift in Sources */,
 				163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */,
 				169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */,
 				169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */,
 				163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */,
 				163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */,
+				169647D1204F45D80025EDB4 /* ConsiderationSelectorViewController.swift in Sources */,
+				169647D6204F47990025EDB4 /* UmbyViewController.swift in Sources */,
 				163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */,
 				163CDA0D204DE64600A073DA /* Array+.swift in Sources */,
 			);

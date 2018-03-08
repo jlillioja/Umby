@@ -9,37 +9,24 @@
 import Foundation
 import UIKit
 
-class TypeSelectorViewController: UIViewController {
-    
-    var navigationManager: NavigationManager?
-    let margin: CGFloat = 30.0
+class TypeSelectorViewController: UmbyViewController {
     
     let typeEntries = ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought"]
     
     override func loadView() {
-        view = UIView()
-        view.backgroundColor = UmbyColors.blue
+        super.loadView()
+        
         let layoutGuide = view.safeAreaLayoutGuide
         
-        let label = UILabel().forCustom()
-        label.text = "What type of entry is this?"
-        label.textColor = UmbyColors.white
-        label.font = .systemFont(ofSize: 16.0)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.textAlignment = .center
+        let label = UmbyLabel("What type of entry is this?")
         view.addSubview(label)
         let labelConstraints = [
             label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
-            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
         ]
         
-        let typeTable = UITableView().forCustom()
-        typeTable.delegate = self
-        typeTable.dataSource = self
-        typeTable.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        typeTable.separatorStyle = .none
-        
+        let typeTable = UmbyTable(self)
         view.addSubview(typeTable)
         let tableConstraints = [
             typeTable.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
@@ -48,15 +35,7 @@ class TypeSelectorViewController: UIViewController {
         ]
         
         
-        let customEntry = UITextField().forCustom()
-        customEntry.delegate = self
-        customEntry.borderStyle = .roundedRect
-        let attributedPlaceholder = NSAttributedString(string: "Enter your own type", attributes: [
-            NSAttributedStringKey.foregroundColor: UmbyColors.grey
-        ])
-        customEntry.attributedPlaceholder = attributedPlaceholder
-        customEntry.backgroundColor = UmbyColors.white
-        customEntry.layer.cornerRadius = UmbyStyle.smallCornerRadius
+        let customEntry = UmbyTextField(title: "Enter your own type", delegate: self)
         view.addSubview(customEntry)
         let customEntryConstraints = [
             customEntry.topAnchor.constraint(equalTo: typeTable.bottomAnchor, constant: margin),
@@ -65,12 +44,7 @@ class TypeSelectorViewController: UIViewController {
             customEntry.trailingAnchor.constraint(equalTo: typeTable.trailingAnchor),
         ]
         
-        let nextButton = UIButton().forCustom()
-        nextButton.setTitle("NEXT", for: .normal)
-        nextButton.backgroundColor = UmbyColors.white
-        nextButton.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        nextButton.setTitleColor(UmbyColors.blue, for: .normal)
-        nextButton.onTap {
+        let nextButton = UmbyButton(title: "NEXT") {
             self.navigationManager?.navigateToFeelingSelector()
         }
         view.addSubview(nextButton)
@@ -85,7 +59,7 @@ class TypeSelectorViewController: UIViewController {
     }
 }
 
-extension TypeSelectorViewController: UITableViewDelegate, UITableViewDataSource {
+extension TypeSelectorViewController: UmbyTableViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
