@@ -20,6 +20,7 @@ extension UIView {
             ])
     }
     
+    @discardableResult
     func forCustom() -> Self {
         translatesAutoresizingMaskIntoConstraints = false
         return self

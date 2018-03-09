@@ -9,16 +9,19 @@
 import Foundation
 import UIKit
 
-class TypeTableViewCell: UITableViewCell {
-    static let reuseIdentifier = "TypeTableViewCell"
+class TagTableViewCell: UITableViewCell {
+    static let reuseIdentifier = "TagTableViewCell"
     
     let margin: CGFloat = 10
+    let tagText: String
     
-    init(_ label: String) {
-        super.init(style: .default, reuseIdentifier: TypeTableViewCell.reuseIdentifier)
+    init(_ tag: String) {
+        self.tagText = tag
+        
+        super.init(style: .default, reuseIdentifier: TagTableViewCell.reuseIdentifier)
         
         let text = UILabel().forCustom()
-        text.text = label
+        text.text = tagText
         text.textAlignment = .center
         text.adjustsFontSizeToFitWidth = true
         addSubview(text)

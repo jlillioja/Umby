@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TagSelectorViewController: UmbyViewController {
+class TagSelectorViewController: UmbyNewEntryViewController {
     
     let whoEntries = ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"]
     let whereEntries = ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"]
@@ -69,14 +69,20 @@ class TagSelectorViewController: UmbyViewController {
             self.navigationManager?.navigateToConsiderationSelector()
         }
         view.addSubview(nextButton)
+        bottomConstraint = nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
         let nextButtonConstraints = [
             nextButton.topAnchor.constraint(equalTo: customWhoEntry.bottomAnchor, constant: margin),
             nextButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             nextButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-            nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
+            bottomConstraint!,
         ]
         
-        NSLayoutConstraint.activate(labelConstraints+whoTableConstraints+whatTableConstraints+customWhoEntryConstraints+customWhatEntryConstraints+nextButtonConstraints)
+        labelConstraints.activate()
+        whoTableConstraints.activate()
+        whatTableConstraints.activate()
+        customWhoEntryConstraints.activate()
+        customWhatEntryConstraints.activate()
+        nextButtonConstraints.activate()
     }
 }
 
@@ -87,22 +93,30 @@ extension TagSelectorViewController: UmbyTableViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == whoTable) {
-            return whoEntries.count
+            return tagProvider?.tagsForWho().count ?? 0
         } else {
-            return whereEntries.count
+            return tagProvider?.tagsForWhere().count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (tableView == whoTable) {
-            return TypeTableViewCell(whoEntries[indexPath.row])
+            return TagTableViewCell(tagProvider?.tagsForWho()[indexPath.row] ?? "")
         } else {
-            return TypeTableViewCell(whereEntries[indexPath.row])
+            return TagTableViewCell(tagProvider?.tagsForWhere()[indexPath.row] ?? "")
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
+        selectedCell?.accessoryType = .checkmark
+        newEntryBuilder?.addTag(selectedCell?.tagText)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
+        selectedCell?.accessoryType = .none
+        newEntryBuilder?.removeTag(selectedCell?.tagText)
     }
 }
 

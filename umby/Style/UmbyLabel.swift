@@ -7,3 +7,38 @@
 //
 
 import Foundation
+import UIKit
+
+class UmbyLabel: UILabel {
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        
+        forCustom()
+        
+        textColor = UmbyColors.white
+        font = .systemFont(ofSize: 24.0)
+        setContentHuggingPriority(.defaultHigh, for: .vertical)
+        textAlignment = .center
+        numberOfLines = 0
+    }
+    
+    func small() -> Self {
+        font = .systemFont(ofSize: 12.0)
+        return self
+    }
+    
+    func leftAligned() -> Self {
+        textAlignment = .left
+        return self
+    }
+    
+    convenience init(_ text: String) {
+        self.init()
+        self.text = text
+    }
+}

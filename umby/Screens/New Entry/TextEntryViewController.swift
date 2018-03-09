@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextEntryViewController: UmbyViewController {
+class TextEntryViewController: UmbyNewEntryViewController {
     
     override func loadView() {
         super.loadView()
@@ -24,6 +24,7 @@ class TextEntryViewController: UmbyViewController {
         ]
         
         let textBox = UITextView().forCustom()
+        textBox.delegate = self
         textBox.backgroundColor = UmbyColors.white
         textBox.layer.cornerRadius = UmbyStyle.smallCornerRadius
         textBox.font = .systemFont(ofSize: 24.0)
@@ -38,24 +39,21 @@ class TextEntryViewController: UmbyViewController {
             self.navigationManager?.navigateToTypeSelector()
         }
         view.addSubview(nextButton)
+        bottomConstraint = nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
         let nextButtonConstraints = [
             nextButton.topAnchor.constraint(equalTo: textBox.bottomAnchor, constant: margin),
             nextButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             nextButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-            nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
+            bottomConstraint!,
         ]
         
         NSLayoutConstraint.activate(labelConstraints+textBoxConstraints+nextButtonConstraints)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension TextEntryViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        newEntryBuilder?.setText(textView.text)
     }
 }
 

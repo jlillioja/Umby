@@ -18,9 +18,13 @@
 		163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* RootNavigationController.swift */; };
 		163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */; };
 		1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */; };
+		1652BB762051C9A100AA3D2B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB752051C9A100AA3D2B /* Entry.swift */; };
+		1652BB782051CABB00AA3D2B /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */; };
+		1652BB7A2051D3ED00AA3D2B /* EntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB792051D3ED00AA3D2B /* EntryManager.swift */; };
+		1652BB7D2051D75300AA3D2B /* UmbyNewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB7C2051D75300AA3D2B /* UmbyNewEntryViewController.swift */; };
 		16666CF8204DF94B00E43007 /* UmbyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16666CF7204DF94B00E43007 /* UmbyStyle.swift */; };
 		169647C8204F11020025EDB4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C7204F11020025EDB4 /* UIColor+.swift */; };
-		169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */; };
+		169647CA204F208E0025EDB4 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647C9204F208E0025EDB4 /* TagTableViewCell.swift */; };
 		169647CC204F24980025EDB4 /* FeelingSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */; };
 		169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */; };
 		169647D1204F45D80025EDB4 /* ConsiderationSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */; };
@@ -34,6 +38,9 @@
 		169647E2205076510025EDB4 /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E1205076510025EDB4 /* EntryListViewController.swift */; };
 		169647E620507BB60025EDB4 /* UmbyEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */; };
 		169647E92051A73D0025EDB4 /* EntryCreationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169647E82051A73D0025EDB4 /* EntryCreationNavigationController.swift */; };
+		16E1F7EF205217FD007E5950 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1F7EE205217FD007E5950 /* Container.swift */; };
+		16E1F7F120524430007E5950 /* UmbrellaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1F7F020524430007E5950 /* UmbrellaListViewController.swift */; };
+		16E1F7F3205244FD007E5950 /* RaindropsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1F7F2205244FD007E5950 /* RaindropsListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,9 +57,13 @@
 		163CDA0E204DECC500A073DA /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectorViewController.swift; sourceTree = "<group>"; };
 		1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListNavigationController.swift; sourceTree = "<group>"; };
+		1652BB752051C9A100AA3D2B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
+		1652BB792051D3ED00AA3D2B /* EntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryManager.swift; sourceTree = "<group>"; };
+		1652BB7C2051D75300AA3D2B /* UmbyNewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyNewEntryViewController.swift; sourceTree = "<group>"; };
 		16666CF7204DF94B00E43007 /* UmbyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyStyle.swift; sourceTree = "<group>"; };
 		169647C7204F11020025EDB4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCell.swift; sourceTree = "<group>"; };
+		169647C9204F208E0025EDB4 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSelectorViewController.swift; sourceTree = "<group>"; };
 		169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorViewController.swift; sourceTree = "<group>"; };
 		169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsiderationSelectorViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +77,12 @@
 		169647E1205076510025EDB4 /* EntryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
 		169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyEntryTableViewCell.swift; sourceTree = "<group>"; };
 		169647E82051A73D0025EDB4 /* EntryCreationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCreationNavigationController.swift; sourceTree = "<group>"; };
+		16E1F7EE205217FD007E5950 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		16E1F7F020524430007E5950 /* UmbrellaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaListViewController.swift; sourceTree = "<group>"; };
+		16E1F7F2205244FD007E5950 /* RaindropsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaindropsListViewController.swift; sourceTree = "<group>"; };
+		1AAFC866B9446555336E0ACC /* Pods-umby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-umby.release.xcconfig"; path = "Pods/Target Support Files/Pods-umby/Pods-umby.release.xcconfig"; sourceTree = "<group>"; };
+		271C8F3FF23C9CA58CCFB48F /* Pods_umby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_umby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E07180C968F04771E4D071C1 /* Pods-umby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-umby.debug.xcconfig"; path = "Pods/Target Support Files/Pods-umby/Pods-umby.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +101,8 @@
 			children = (
 				163CD9EF204DDD4B00A073DA /* umby */,
 				163CD9EE204DDD4B00A073DA /* Products */,
+				EE390C0B36926E6B47D60796 /* Pods */,
+				AFD9F906531B652E96CA1630 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +125,9 @@
 				163CD9FA204DDD4B00A073DA /* Assets.xcassets */,
 				163CD9FF204DDD4B00A073DA /* Info.plist */,
 				163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */,
+				1652BB752051C9A100AA3D2B /* Entry.swift */,
+				1652BB792051D3ED00AA3D2B /* EntryManager.swift */,
+				16E1F7EE205217FD007E5950 /* Container.swift */,
 			);
 			path = umby;
 			sourceTree = "<group>";
@@ -122,18 +144,29 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		169647CD204F2CA70025EDB4 /* Screens */ = {
+		1652BB7B2051D70E00AA3D2B /* New Entry */ = {
 			isa = PBXGroup;
 			children = (
 				163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */,
 				163CDA10204DEDCF00A073DA /* TypeSelectorViewController.swift */,
-				169647C9204F208E0025EDB4 /* TypeTableViewCell.swift */,
+				169647C9204F208E0025EDB4 /* TagTableViewCell.swift */,
 				169647CB204F24980025EDB4 /* FeelingSelectorViewController.swift */,
 				169647CE204F2CFE0025EDB4 /* TagSelectorViewController.swift */,
 				169647D0204F45D80025EDB4 /* ConsiderationSelectorViewController.swift */,
 				169647DF204F5B6A0025EDB4 /* SendEntryViewController.swift */,
+			);
+			path = "New Entry";
+			sourceTree = "<group>";
+		};
+		169647CD204F2CA70025EDB4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1652BB7B2051D70E00AA3D2B /* New Entry */,
 				169647E1205076510025EDB4 /* EntryListViewController.swift */,
 				169647E520507BB60025EDB4 /* UmbyEntryTableViewCell.swift */,
+				1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */,
+				16E1F7F020524430007E5950 /* UmbrellaListViewController.swift */,
+				16E1F7F2205244FD007E5950 /* RaindropsListViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -148,6 +181,7 @@
 				169647D9204F48E70025EDB4 /* UmbyButton.swift */,
 				169647DB204F4A0F0025EDB4 /* UmbyTable.swift */,
 				169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */,
+				1652BB7C2051D75300AA3D2B /* UmbyNewEntryViewController.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -162,6 +196,23 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		AFD9F906531B652E96CA1630 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				271C8F3FF23C9CA58CCFB48F /* Pods_umby.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE390C0B36926E6B47D60796 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E07180C968F04771E4D071C1 /* Pods-umby.debug.xcconfig */,
+				1AAFC866B9446555336E0ACC /* Pods-umby.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 163CDA02204DDD4B00A073DA /* Build configuration list for PBXNativeTarget "umby" */;
 			buildPhases = (
+				4D775AD35FE68AD3349CC8AA /* [CP] Check Pods Manifest.lock */,
 				163CD9E9204DDD4B00A073DA /* Sources */,
 				163CD9EA204DDD4B00A073DA /* Frameworks */,
 				163CD9EB204DDD4B00A073DA /* Resources */,
+				2CCE6FBED65DC5B3327208C0 /* [CP] Embed Pods Frameworks */,
+				9D9580A18640E1652E2BAE1D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,6 +281,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2CCE6FBED65DC5B3327208C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-umby/Pods-umby-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-umby/Pods-umby-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D775AD35FE68AD3349CC8AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-umby-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D9580A18640E1652E2BAE1D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-umby/Pods-umby-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		163CD9E9204DDD4B00A073DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -247,16 +355,23 @@
 				169647E92051A73D0025EDB4 /* EntryCreationNavigationController.swift in Sources */,
 				163CDA08204DE24500A073DA /* NSLayoutConstraint+.swift in Sources */,
 				169647C8204F11020025EDB4 /* UIColor+.swift in Sources */,
+				1652BB762051C9A100AA3D2B /* Entry.swift in Sources */,
+				16E1F7F3205244FD007E5950 /* RaindropsListViewController.swift in Sources */,
 				16666CF8204DF94B00E43007 /* UmbyStyle.swift in Sources */,
 				169647D4204F46820025EDB4 /* UmbyLabel.swift in Sources */,
 				163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */,
 				169647CF204F2CFE0025EDB4 /* TagSelectorViewController.swift in Sources */,
-				169647CA204F208E0025EDB4 /* TypeTableViewCell.swift in Sources */,
+				16E1F7F120524430007E5950 /* UmbrellaListViewController.swift in Sources */,
+				169647CA204F208E0025EDB4 /* TagTableViewCell.swift in Sources */,
 				163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */,
 				163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */,
 				169647D1204F45D80025EDB4 /* ConsiderationSelectorViewController.swift in Sources */,
+				1652BB7D2051D75300AA3D2B /* UmbyNewEntryViewController.swift in Sources */,
 				169647D6204F47990025EDB4 /* UmbyViewController.swift in Sources */,
+				1652BB7A2051D3ED00AA3D2B /* EntryManager.swift in Sources */,
+				16E1F7EF205217FD007E5950 /* Container.swift in Sources */,
 				163CDA11204DEDCF00A073DA /* TypeSelectorViewController.swift in Sources */,
+				1652BB782051CABB00AA3D2B /* EntryDetailViewController.swift in Sources */,
 				163CDA0D204DE64600A073DA /* Array+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,10 +488,12 @@
 		};
 		163CDA03204DDD4B00A073DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E07180C968F04771E4D071C1 /* Pods-umby.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34J4GF89XX;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = umby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlillioja.umby;
@@ -388,10 +505,12 @@
 		};
 		163CDA04204DDD4B00A073DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AAFC866B9446555336E0ACC /* Pods-umby.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34J4GF89XX;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = umby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlillioja.umby;

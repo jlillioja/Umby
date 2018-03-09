@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class TypeSelectorViewController: UmbyViewController {
-    
-    let typeEntries = ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought"]
+class TypeSelectorViewController: UmbyNewEntryViewController {
     
     override func loadView() {
         super.loadView()
@@ -48,11 +46,12 @@ class TypeSelectorViewController: UmbyViewController {
             self.navigationManager?.navigateToFeelingSelector()
         }
         view.addSubview(nextButton)
+        bottomConstraint = nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
         let nextButtonConstraints = [
             nextButton.topAnchor.constraint(equalTo: customEntry.bottomAnchor, constant: margin),
             nextButton.leadingAnchor.constraint(equalTo: customEntry.leadingAnchor),
             nextButton.trailingAnchor.constraint(equalTo: customEntry.trailingAnchor),
-            nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
+            bottomConstraint!,
         ]
         
         NSLayoutConstraint.activate(labelConstraints+tableConstraints+customEntryConstraints+nextButtonConstraints)
@@ -65,15 +64,23 @@ extension TypeSelectorViewController: UmbyTableViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return typeEntries.count
+        return tagProvider?.tagsForType().count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return TypeTableViewCell(typeEntries[indexPath.row])
+        return TagTableViewCell(tagProvider?.tagsForType()[indexPath.row] ?? "")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
+        selectedCell?.accessoryType = .checkmark
+        newEntryBuilder?.addTag(selectedCell?.tagText)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
+        selectedCell?.accessoryType = .none
+        newEntryBuilder?.removeTag(selectedCell?.tagText)
     }
 }
 

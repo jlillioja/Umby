@@ -16,89 +16,106 @@ protocol NavigationManager {
     func navigateToConsiderationSelector()
     func navigateToSendEntryViewController()
     func navigateToEntryList()
+    func navigateToEntryDetail(_ entry: Entry)
 }
 
 class RootNavigationController: UITabBarController, NavigationManager {
     
-    let makeEntryNavigationController = UINavigationController.init()
-    let entryListNavigationController = UINavigationController.init()
+    let entryManager = EntryManager()
     
-    let textEntryViewController: TextEntryViewController = {
-        let vc = TextEntryViewController()
-        return vc
-    }()
-    
-    let typeSelectorViewController: TypeSelectorViewController = {
-        let vc = TypeSelectorViewController()
-        return vc
-    }()
-    
-    let feelingSelectorViewController: FeelingSelectorViewController = {
-        let vc = FeelingSelectorViewController()
-        return vc
-    }()
-    
-    let tagSelectorViewController: TagSelectorViewController = {
-        let vc = TagSelectorViewController()
-        return vc
-    }()
-    
+    let textEntryViewController = TextEntryViewController()
+    let typeSelectorViewController = TypeSelectorViewController()
+    let feelingSelectorViewController = FeelingSelectorViewController()
+    let tagSelectorViewController = TagSelectorViewController()
     let considerationSelectorViewController = ConsiderationSelectorViewController()
-    
     let sendEntryViewController = SendEntryViewController()
     
     let entryListPageViewController = UIPageViewController.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    let umbrellaEntriesListViewController = EntryListViewController()
-    let raindropEntriesListViewController = EntryListViewController()
+    let umbrellaEntriesListViewController = UmbrellaListViewController()
+    let raindropEntriesListViewController = RaindropsListViewController()
+    
+    let entryCreationNavigationController = EntryCreationNavigationController()
+    let entryListNavigationController = EntryListNavigationController()
     
     override func viewDidLoad() {
         setupViewControllers()
     }
     
     private func setupViewControllers() {
-        textEntryViewController.navigationManager = self
-        typeSelectorViewController.navigationManager = self
-        feelingSelectorViewController.navigationManager = self
-        tagSelectorViewController.navigationManager = self
-        considerationSelectorViewController.navigationManager = self
-        sendEntryViewController.navigationManager = self
+        let entryCreationViewControllers = [
+            textEntryViewController,
+            typeSelectorViewController,
+            feelingSelectorViewController,
+            tagSelectorViewController,
+            considerationSelectorViewController,
+            sendEntryViewController
+        ]
+        entryCreationViewControllers.forEach {
+            $0.navigationManager = self
+            $0.newEntryBuilder = entryManager
+            $0.tagProvider = entryManager
+        }
         
         entryListPageViewController.dataSource = self
         entryListPageViewController.setViewControllers([umbrellaEntriesListViewController],
                                                        direction: .forward,
                                                        animated: true,
                                                        completion: nil)
+        entryListPageViewController.view.backgroundColor = UmbyColors.white
+        
+        umbrellaEntriesListViewController.navigationManager = self
+        umbrellaEntriesListViewController.entryProvider = entryManager
+        
+        raindropEntriesListViewController.navigationManager = self
+        raindropEntriesListViewController.entryProvider = entryManager
         
         entryListNavigationController.pushViewController(entryListPageViewController, animated: false)
-        makeEntryNavigationController.pushViewController(textEntryViewController, animated: false)
+        entryCreationNavigationController.pushViewController(textEntryViewController, animated: false)
         
-        self.viewControllers = [entryListNavigationController, makeEntryNavigationController]
-        selectedViewController = makeEntryNavigationController
+        self.viewControllers = [entryListNavigationController]
+        selectedViewController = entryListNavigationController
+        
+        let makeEntryBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(presentEntryCreation))
+        entryListPageViewController.navigationItem.rightBarButtonItem = makeEntryBarButtonItem
+        
+        let doneWithEntryBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(navigateToEntryList))
+        entryCreationNavigationController.navigationItem.rightBarButtonItem = doneWithEntryBarButtonItem
+    }
+    
+    @objc func presentEntryCreation() {
+        entryManager.beginNewEntry()
+        present(entryCreationNavigationController, animated: true, completion: nil)
     }
     
     func navigateToTypeSelector() {
-        makeEntryNavigationController.pushViewController(typeSelectorViewController, animated: true)
+        entryCreationNavigationController.pushViewController(typeSelectorViewController, animated: true)
     }
     
     func navigateToFeelingSelector() {
-        makeEntryNavigationController.pushViewController(feelingSelectorViewController, animated: true)
+        entryCreationNavigationController.pushViewController(feelingSelectorViewController, animated: true)
     }
     
     func navigateToTagSelector() {
-        makeEntryNavigationController.pushViewController(tagSelectorViewController, animated: true)
+        entryCreationNavigationController.pushViewController(tagSelectorViewController, animated: true)
     }
     
     func navigateToConsiderationSelector() {
-        makeEntryNavigationController.pushViewController(considerationSelectorViewController, animated: true)
+        entryCreationNavigationController.pushViewController(considerationSelectorViewController, animated: true)
     }
     
     func navigateToSendEntryViewController() {
-        makeEntryNavigationController.pushViewController(sendEntryViewController, animated: true)
+        entryCreationNavigationController.pushViewController(sendEntryViewController, animated: true)
     }
     
-    func navigateToEntryList() {
+    @objc func navigateToEntryList() {
         entryListNavigationController.popToViewController(entryListPageViewController, animated: true)
         self.selectedViewController = entryListNavigationController
+        dismiss(animated: true, completion: nil)
+        entryCreationNavigationController.popToViewController(textEntryViewController, animated: false)
+    }
+    
+    func navigateToEntryDetail(_ entry: Entry) {
+        entryListNavigationController.pushViewController(EntryDetailViewController(entry), animated: true)
     }
 }
 

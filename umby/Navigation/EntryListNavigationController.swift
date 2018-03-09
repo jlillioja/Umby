@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class EntryListNavigationController: UINavigationController {
+    
+    static let TAG = 2
+    
+    override func viewDidLoad() {
+        tabBarItem = UITabBarItem.init(tabBarSystemItem: .history, tag: EntryListNavigationController.TAG)
+    }
+}
