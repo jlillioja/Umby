@@ -12,6 +12,7 @@ protocol NewEntryBuilder {
     func beginNewEntry()
     func setText(_ text: String)
     func addTags(_ tags: [String])
+    func addTags(_ tags: [String], forKey: String)
     func removeTags(_ tags: [String])
     func setFurtherConsideration(_ furtherConsideration: Bool)
     func finishEntry()
@@ -21,6 +22,12 @@ extension NewEntryBuilder {
     func addTag(_ tag: String?) {
         if (tag != nil) {
             addTags([tag!])
+        }
+    }
+    
+    func addTag(_ tag: String?, forKey: String) {
+        if let tag = tag {
+            addTags([tag], forKey: forKey)
         }
     }
     
@@ -67,6 +74,10 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     
     func addTags(_ tags: [String]) {
         currentEntry?.tags.append(contentsOf: tags)
+    }
+    
+    func addTags(_ tags: [String], forKey key: String) {
+        
     }
     
     func removeTags(_ tags: [String]) {

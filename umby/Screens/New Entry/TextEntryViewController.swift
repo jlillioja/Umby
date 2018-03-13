@@ -36,7 +36,7 @@ class TextEntryViewController: UmbyNewEntryViewController {
         ]
         
         let nextButton = UmbyButton(title: "NEXT") {
-            self.navigationManager?.navigateToTypeSelector()
+            self.navigationManager?.navigateToTypeAndFeelingTagSelector()
         }
         view.addSubview(nextButton)
         bottomConstraint = nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)

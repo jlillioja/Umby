@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 protocol NavigationManager {
-    func navigateToTypeSelector()
-    func navigateToFeelingSelector()
-    func navigateToTagSelector()
+    func navigateToTypeAndFeelingTagSelector()
+    func navigateToWhoAndWhereTagSelector()
     func navigateToConsiderationSelector()
     func navigateToSendEntryViewController()
     func navigateToEntryList()
@@ -24,13 +23,12 @@ class RootNavigationController: UITabBarController, NavigationManager {
     let entryManager = EntryManager()
     
     let textEntryViewController = TextEntryViewController()
-    let typeSelectorViewController = TypeSelectorViewController()
-    let feelingSelectorViewController = FeelingSelectorViewController()
-    let tagSelectorViewController = TagSelectorViewController()
+    let typeAndFeelingTagSelectorViewController = TypeAndFeelingTagSelectorViewController()
+    let tagSelectorViewController = WhoAndWhereTagSelectorViewController()
     let considerationSelectorViewController = ConsiderationSelectorViewController()
     let sendEntryViewController = SendEntryViewController()
     
-    let entryListPageViewController = UIPageViewController.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    let entryListPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     let umbrellaEntriesListViewController = UmbrellaListViewController()
     let raindropEntriesListViewController = RaindropsListViewController()
     
@@ -44,8 +42,7 @@ class RootNavigationController: UITabBarController, NavigationManager {
     private func setupViewControllers() {
         let entryCreationViewControllers = [
             textEntryViewController,
-            typeSelectorViewController,
-            feelingSelectorViewController,
+            typeAndFeelingTagSelectorViewController,
             tagSelectorViewController,
             considerationSelectorViewController,
             sendEntryViewController
@@ -87,15 +84,11 @@ class RootNavigationController: UITabBarController, NavigationManager {
         present(entryCreationNavigationController, animated: true, completion: nil)
     }
     
-    func navigateToTypeSelector() {
-        entryCreationNavigationController.pushViewController(typeSelectorViewController, animated: true)
+    func navigateToTypeAndFeelingTagSelector() {
+        entryCreationNavigationController.pushViewController(typeAndFeelingTagSelectorViewController, animated: true)
     }
     
-    func navigateToFeelingSelector() {
-        entryCreationNavigationController.pushViewController(feelingSelectorViewController, animated: true)
-    }
-    
-    func navigateToTagSelector() {
+    func navigateToWhoAndWhereTagSelector() {
         entryCreationNavigationController.pushViewController(tagSelectorViewController, animated: true)
     }
     

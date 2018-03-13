@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>umby.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>9BEEE490E787F2459E66CD1E98144F951DE8D31E</string>
+				<key>dateExpires</key>
+				<string>10/20/18</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>34J4GF89XX.com.jlillioja.umby</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>34J4GF89XX</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>34J4GF89XX.com.jlillioja.umby</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>umby.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>6b7c2a98-8398-449d-8542-0d66db872ef2</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.jlillioja.umby</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>34J4GF89XX</string>
+				<key>name</key>
+				<string>Jacob Lillioja</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
