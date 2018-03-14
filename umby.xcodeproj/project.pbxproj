@@ -17,6 +17,7 @@
 		163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* RootNavigationController.swift */; };
 		163CDA11204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */; };
 		165283CD2058A20E0046B641 /* UmbyRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */; };
+		165283CF2058BF700046B641 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283CE2058BF700046B641 /* TagType.swift */; };
 		1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */; };
 		1652BB762051C9A100AA3D2B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB752051C9A100AA3D2B /* Entry.swift */; };
 		1652BB782051CABB00AA3D2B /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */; };
@@ -57,6 +58,7 @@
 		163CDA0E204DECC500A073DA /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAndFeelingTagSelectorViewController.swift; sourceTree = "<group>"; };
 		165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyRadioButtonGroup.swift; sourceTree = "<group>"; };
+		165283CE2058BF700046B641 /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
 		1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListNavigationController.swift; sourceTree = "<group>"; };
 		1652BB752051C9A100AA3D2B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				1652BB752051C9A100AA3D2B /* Entry.swift */,
 				1652BB792051D3ED00AA3D2B /* EntryManager.swift */,
 				16E1F7EE205217FD007E5950 /* Container.swift */,
+				165283CE2058BF700046B641 /* TagType.swift */,
 			);
 			path = umby;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */,
 				163CDA0B204DE28400A073DA /* NSObject+.swift in Sources */,
 				169647E92051A73D0025EDB4 /* EntryCreationNavigationController.swift in Sources */,
+				165283CF2058BF700046B641 /* TagType.swift in Sources */,
 				163CDA08204DE24500A073DA /* NSLayoutConstraint+.swift in Sources */,
 				169647C8204F11020025EDB4 /* UIColor+.swift in Sources */,
 				1652BB762051C9A100AA3D2B /* Entry.swift in Sources */,

@@ -14,6 +14,9 @@ class TypeAndFeelingTagSelectorViewController: UmbyNewEntryViewController {
     var typeTable: UmbyTable!
     var feelingTable: UmbyTable!
     
+    var customTypeEntry: UmbyTextField!
+    var customFeelingEntry: UmbyTextField!
+    
     override func loadView() {
         super.loadView()
         
@@ -43,7 +46,7 @@ class TypeAndFeelingTagSelectorViewController: UmbyNewEntryViewController {
             typeTable.trailingAnchor.constraint(equalTo: typeLabel.trailingAnchor),
         ].activate()
         
-        let customTypeEntry = UmbyTextField(title: "Enter your own type", delegate: self)
+        customTypeEntry = UmbyTextField(title: "Enter your own type", delegate: self)
         view.addSubview(customTypeEntry)
         [
             customTypeEntry.topAnchor.constraint(equalTo: typeTable.bottomAnchor, constant: margin),
@@ -61,7 +64,7 @@ class TypeAndFeelingTagSelectorViewController: UmbyNewEntryViewController {
             feelingTable.bottomAnchor.constraint(equalTo: typeTable.bottomAnchor),
         ].activate()
         
-        let customFeelingEntry = UmbyTextField(title: "Enter your own feeling", delegate: self)
+        customFeelingEntry = UmbyTextField(title: "Enter your own feeling", delegate: self)
         view.addSubview(customFeelingEntry)
         [
             customFeelingEntry.topAnchor.constraint(equalTo: feelingTable.bottomAnchor, constant: margin),
@@ -128,8 +131,14 @@ extension TypeAndFeelingTagSelectorViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        var type: TagType?
+        if (textField == customTypeEntry) {
+            type = .TYPE
+        } else {
+            type = .FEELING
+        }
         if let text = textField.text {
-            newEntryBuilder?.addTag(text)
+            newEntryBuilder?.addCustomTag(text, forType: type!)
         }
     }
 }

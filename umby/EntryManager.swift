@@ -12,7 +12,7 @@ protocol NewEntryBuilder {
     func beginNewEntry()
     func setText(_ text: String)
     func addTags(_ tags: [String])
-    func addTags(_ tags: [String], forKey: String)
+    func addCustomTag(_ tag: String, forType: TagType)
     func removeTags(_ tags: [String])
     func setFurtherConsideration(_ furtherConsideration: Bool)
     func finishEntry()
@@ -22,12 +22,6 @@ extension NewEntryBuilder {
     func addTag(_ tag: String?) {
         if (tag != nil) {
             addTags([tag!])
-        }
-    }
-    
-    func addTag(_ tag: String?, forKey: String) {
-        if let tag = tag {
-            addTags([tag], forKey: forKey)
         }
     }
     
@@ -76,8 +70,9 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
         currentEntry?.tags.append(contentsOf: tags)
     }
     
-    func addTags(_ tags: [String], forKey key: String) {
-        
+    func addCustomTag(_ tag: String, forType key: TagType) {
+        tags[key]?.append(tag)
+        addTag(tag)
     }
     
     func removeTags(_ tags: [String]) {
@@ -104,18 +99,25 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
         }
     }
     
+    var tags: [TagType: [String]] = [
+        TagType.FEELING : ["Calm", "Angry", "Prepared", "Unprepared", "Happy", "Sad", "Confident", "Afraid", "Proud", "Embarrassed" ],
+        TagType.TYPE : ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought", "Note"],
+        TagType.WHO : ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"],
+        TagType.WHERE : ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"],
+        ]
+    
     func tagsForType() -> [String] {
-        return ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought"]
+        return tags[.TYPE] ?? []
     }
     
     func tagsForFeelings() -> [String] {
-        return ["Calm", "Angry", "Prepared", "Unprepared", "Happy", "Sad", "Confident", "Afraid", "Proud", "Embarrassed" ]
+        return tags[.FEELING] ?? []
     }
     
     func tagsForWho() -> [String] {
-        return ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"]
+        return tags[.WHO] ?? []
     }
     func tagsForWhere() -> [String] {
-        return ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"]
+        return tags[.WHERE] ?? []
     }
 }
