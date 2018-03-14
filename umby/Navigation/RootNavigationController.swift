@@ -22,12 +22,6 @@ class RootNavigationController: UITabBarController, NavigationManager {
     
     let entryManager = EntryManager()
     
-    let textEntryViewController = TextEntryViewController()
-    let typeAndFeelingTagSelectorViewController = TypeAndFeelingTagSelectorViewController()
-    let tagSelectorViewController = WhoAndWhereTagSelectorViewController()
-    let considerationSelectorViewController = ConsiderationSelectorViewController()
-    let sendEntryViewController = SendEntryViewController()
-    
     let entryListPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     let umbrellaEntriesListViewController = UmbrellaListViewController()
     let raindropEntriesListViewController = RaindropsListViewController()
@@ -40,18 +34,9 @@ class RootNavigationController: UITabBarController, NavigationManager {
     }
     
     private func setupViewControllers() {
-        let entryCreationViewControllers = [
-            textEntryViewController,
-            typeAndFeelingTagSelectorViewController,
-            tagSelectorViewController,
-            considerationSelectorViewController,
-            sendEntryViewController
-        ]
-        entryCreationViewControllers.forEach {
-            $0.navigationManager = self
-            $0.newEntryBuilder = entryManager
-            $0.tagProvider = entryManager
-        }
+        entryCreationNavigationController.rootNavigationManager = self
+        entryCreationNavigationController.newEntryBuilder = entryManager
+        entryCreationNavigationController.tagProvider = entryManager
         
         entryListPageViewController.dataSource = self
         entryListPageViewController.setViewControllers([umbrellaEntriesListViewController],
@@ -67,7 +52,6 @@ class RootNavigationController: UITabBarController, NavigationManager {
         raindropEntriesListViewController.entryProvider = entryManager
         
         entryListNavigationController.pushViewController(entryListPageViewController, animated: false)
-        entryCreationNavigationController.pushViewController(textEntryViewController, animated: false)
         
         self.viewControllers = [entryListNavigationController]
         selectedViewController = entryListNavigationController
@@ -85,26 +69,26 @@ class RootNavigationController: UITabBarController, NavigationManager {
     }
     
     func navigateToTypeAndFeelingTagSelector() {
-        entryCreationNavigationController.pushViewController(typeAndFeelingTagSelectorViewController, animated: true)
+        entryCreationNavigationController.navigateToTypeAndFeelingTagSelector()
     }
     
     func navigateToWhoAndWhereTagSelector() {
-        entryCreationNavigationController.pushViewController(tagSelectorViewController, animated: true)
+        entryCreationNavigationController.navigateToWhoAndWhereTagSelector()
     }
     
     func navigateToConsiderationSelector() {
-        entryCreationNavigationController.pushViewController(considerationSelectorViewController, animated: true)
+        entryCreationNavigationController.navigateToConsiderationSelector()
     }
     
     func navigateToSendEntryViewController() {
-        entryCreationNavigationController.pushViewController(sendEntryViewController, animated: true)
+        entryCreationNavigationController.navigateToSendEntryViewController()
     }
     
     @objc func navigateToEntryList() {
         entryListNavigationController.popToViewController(entryListPageViewController, animated: true)
         self.selectedViewController = entryListNavigationController
         dismiss(animated: true, completion: nil)
-        entryCreationNavigationController.popToViewController(textEntryViewController, animated: false)
+        entryCreationNavigationController.reset()
     }
     
     func navigateToEntryDetail(_ entry: Entry) {

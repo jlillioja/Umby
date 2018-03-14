@@ -42,25 +42,28 @@ class EntryDetailViewController: UmbyViewController {
             ])
         dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
+        let textScrollView = UIScrollView.init().forCustom()
+        view.addSubview(textScrollView)
+        view.addConstraints([
+            textScrollView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: margin),
+            textScrollView.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+            textScrollView.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
+        ])
+        textScrollView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        
         let textLabel = UmbyLabel(entry.text ?? "").leftAligned()
         textLabel.numberOfLines = 0
-        view.addSubview(textLabel)
-        view.addConstraints([
-            textLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: margin),
-            textLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
-        ])
-        textLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        textScrollView.encapsulate(textLabel)
         
         let tagsString = entry.tags.map { tag in"#\(tag)" }.joined(separator: ", ")
         let tagsLabel = UmbyLabel(tagsString).leftAligned()
         view.addSubview(tagsLabel)
         view.addConstraints([
-            tagsLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: margin),
-            tagsLabel.leadingAnchor.constraint(equalTo: textLabel.leadingAnchor),
-            tagsLabel.trailingAnchor.constraint(equalTo: textLabel.trailingAnchor),
-            tagsLabel.bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -margin),
-            ])
+            tagsLabel.topAnchor.constraint(equalTo: textScrollView.bottomAnchor, constant: margin),
+            tagsLabel.leadingAnchor.constraint(equalTo: textScrollView.leadingAnchor),
+            tagsLabel.trailingAnchor.constraint(equalTo: textScrollView.trailingAnchor),
+            tagsLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin),
+        ])
         tagsLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         view.layoutIfNeeded()
