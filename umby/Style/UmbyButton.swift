@@ -15,6 +15,10 @@ class UmbyButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(title: String) {
+        self.init(title: title) { return () }
+    }
+    
     init(title: String, _ onTap: @escaping (() -> Void?)) {
         super.init(frame: .zero)
         
@@ -24,11 +28,26 @@ class UmbyButton: UIButton {
         setTitleColor(UmbyColors.darkBlue, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 24, weight: .semibold)
         backgroundColor = UmbyColors.white
+//        setBackgroundImage(UmbyColors.white.image(), for: .normal)
+//        setBackgroundImage(UmbyColors.grey.image(), for: .selected)
         layer.cornerRadius = UmbyStyle.smallCornerRadius
-        self.onTap {
-            self.backgroundColor = UmbyColors.grey
+        self.tap {
             onTap()
         }
     }
-
+    
+    func select() {
+        backgroundColor = UmbyColors.grey
+    }
+    
+    func deselect() {
+        backgroundColor = UmbyColors.white
+    }
+    
+    func tap(action: (() -> Void)?) {
+        self.onTap {
+            self.select()
+            action?()
+        }
+    }
 }

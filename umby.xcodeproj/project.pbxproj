@@ -16,6 +16,7 @@
 		163CDA0D204DE64600A073DA /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0C204DE64600A073DA /* Array+.swift */; };
 		163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA0E204DECC500A073DA /* RootNavigationController.swift */; };
 		163CDA11204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */; };
+		165283CD2058A20E0046B641 /* UmbyRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */; };
 		1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */; };
 		1652BB762051C9A100AA3D2B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB752051C9A100AA3D2B /* Entry.swift */; };
 		1652BB782051CABB00AA3D2B /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */; };
@@ -55,6 +56,7 @@
 		163CDA0C204DE64600A073DA /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		163CDA0E204DECC500A073DA /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAndFeelingTagSelectorViewController.swift; sourceTree = "<group>"; };
+		165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyRadioButtonGroup.swift; sourceTree = "<group>"; };
 		1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListNavigationController.swift; sourceTree = "<group>"; };
 		1652BB752051C9A100AA3D2B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				169647DB204F4A0F0025EDB4 /* UmbyTable.swift */,
 				169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */,
 				1652BB7C2051D75300AA3D2B /* UmbyNewEntryViewController.swift */,
+				165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				16E1F7F120524430007E5950 /* UmbrellaListViewController.swift in Sources */,
 				169647CA204F208E0025EDB4 /* TagTableViewCell.swift in Sources */,
 				163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */,
+				165283CD2058A20E0046B641 /* UmbyRadioButtonGroup.swift in Sources */,
 				163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */,
 				169647D1204F45D80025EDB4 /* ConsiderationSelectorViewController.swift in Sources */,
 				1652BB7D2051D75300AA3D2B /* UmbyNewEntryViewController.swift in Sources */,

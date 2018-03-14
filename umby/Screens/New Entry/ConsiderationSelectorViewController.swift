@@ -17,52 +17,62 @@ class ConsiderationSelectorViewController: UmbyNewEntryViewController {
         
         let label = UmbyLabel("Is this entry worth further consideration (careful thought)?")
         view.addSubview(label)
-        let labelConstraints = [
+        [
             label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
             label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-        ]
+        ].activate()
         
-        let yesButton = UmbyButton(title: "YES") {
-            self.newEntryBuilder?.setFurtherConsideration(true)
-        }
+        let yesButton = UmbyButton(title: "YES")
         view.addSubview(yesButton)
-        let yesButtonConstraints = [
+        [
             yesButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
             yesButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             yesButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-        ]
+        ].activate()
         
-        let maybeButton = UmbyButton(title: "MAYBE") {
-            self.newEntryBuilder?.setFurtherConsideration(false)
-        }
+        let maybeButton = UmbyButton(title: "MAYBE")
         view.addSubview(maybeButton)
-        let maybeButtonConstraints = [
+        [
             maybeButton.topAnchor.constraint(equalTo: yesButton.bottomAnchor, constant: margin),
             maybeButton.leadingAnchor.constraint(equalTo: yesButton.leadingAnchor),
             maybeButton.trailingAnchor.constraint(equalTo: yesButton.trailingAnchor),
-        ]
+        ].activate()
         
-        let noButton = UmbyButton(title: "NO") {
-            self.newEntryBuilder?.setFurtherConsideration(false)
-        }
+        let noButton = UmbyButton(title: "NO")
         view.addSubview(noButton)
-        let noButtonConstraints = [
+        [
             noButton.topAnchor.constraint(equalTo: maybeButton.bottomAnchor, constant: margin),
             noButton.leadingAnchor.constraint(equalTo: maybeButton.leadingAnchor),
             noButton.trailingAnchor.constraint(equalTo: maybeButton.trailingAnchor),
-        ]
+        ].activate()
         
         let nextButton = UmbyButton(title: "NEXT") {
             self.navigationManager?.navigateToSendEntryViewController()
         }
         view.addSubview(nextButton)
-        let nextButtonConstraints = [
+        [
             nextButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             nextButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
             nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin),
-        ]
-        NSLayoutConstraint.activate(labelConstraints+yesButtonConstraints+maybeButtonConstraints+noButtonConstraints+nextButtonConstraints)
+        ].activate()
         
+        yesButton.tap {
+            maybeButton.deselect()
+            noButton.deselect()
+            self.newEntryBuilder?.setFurtherConsideration(true)
+        }
+        
+        maybeButton.tap {
+            yesButton.deselect()
+            noButton.deselect()
+            self.newEntryBuilder?.setFurtherConsideration(false)
+        }
+        
+        noButton.tap {
+            yesButton.deselect()
+            maybeButton.deselect()
+            self.newEntryBuilder?.setFurtherConsideration(false)
+        }
     }
 }
