@@ -39,11 +39,14 @@ class EntryCreationNavigationController: UINavigationController, NavigationManag
         rootNavigationManager.navigateToEntryDetail(entry)
     }
     
-    var currentIndex = 0
+    func currentIndex() -> Int? {
+        return entryCreationViewControllers.index(of: topViewController as! UmbyNewEntryViewController)
+    }
+    
     func navigateForwards() {
-        if currentIndex < entryCreationViewControllers.count {
-            pushViewController(entryCreationViewControllers[currentIndex], animated: true)
-            currentIndex += 1
+        if let currentIndex = currentIndex(),
+            currentIndex+1 < entryCreationViewControllers.count {
+            pushViewController(entryCreationViewControllers[currentIndex+1], animated: true)
         } else {
             rootNavigationManager.navigateToEntryList()
             reset()
@@ -89,8 +92,6 @@ class EntryCreationNavigationController: UINavigationController, NavigationManag
             $0.tagProvider = tagProvider
         }
         
-        currentIndex = 0
-        self.setViewControllers([], animated: true)
-        navigateForwards()
+        self.setViewControllers([textEntryViewController], animated: true)
     }
 }

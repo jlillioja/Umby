@@ -27,6 +27,7 @@ class UmbyButton: UIButton {
         setTitle(title, for: .normal)
         setTitleColor(UmbyColors.darkBlue, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 24, weight: .semibold)
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
         backgroundColor = UmbyColors.white
 //        setBackgroundImage(UmbyColors.white.image(), for: .normal)
 //        setBackgroundImage(UmbyColors.grey.image(), for: .selected)

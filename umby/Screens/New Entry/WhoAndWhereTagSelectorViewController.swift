@@ -14,7 +14,7 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
     let whoEntries = ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"]
     let whereEntries = ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"]
     
-    let whatTable = UmbyTable()
+    let whereTable = UmbyTable()
     let whoTable = UmbyTable()
     
     override func loadView() {
@@ -37,14 +37,14 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
             whoLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
         ].activate()
         
-        let whatLabel = UmbyLabel("WHAT")
-        view.addSubview(whatLabel)
+        let whereLabel = UmbyLabel("WHERE")
+        view.addSubview(whereLabel)
         [
-            whatLabel.topAnchor.constraint(equalTo: whoLabel.topAnchor),
-            whatLabel.bottomAnchor.constraint(equalTo: whoLabel.bottomAnchor),
-            whatLabel.leadingAnchor.constraint(equalTo: whoLabel.trailingAnchor, constant: margin),
-            whatLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-            whatLabel.widthAnchor.constraint(equalTo: whoLabel.widthAnchor),
+            whereLabel.topAnchor.constraint(equalTo: whoLabel.topAnchor),
+            whereLabel.bottomAnchor.constraint(equalTo: whoLabel.bottomAnchor),
+            whereLabel.leadingAnchor.constraint(equalTo: whoLabel.trailingAnchor, constant: margin),
+            whereLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
+            whereLabel.widthAnchor.constraint(equalTo: whoLabel.widthAnchor),
         ].activate()
         
         whoTable.controller = self
@@ -55,13 +55,13 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
             whoTable.trailingAnchor.constraint(equalTo: whoLabel.trailingAnchor),
         ].activate()
         
-        whatTable.controller = self
-        view.addSubview(whatTable)
+        whereTable.controller = self
+        view.addSubview(whereTable)
         [
-            whatTable.topAnchor.constraint(equalTo: whatLabel.bottomAnchor, constant: margin),
-            whatTable.leadingAnchor.constraint(equalTo: whatLabel.leadingAnchor),
-            whatTable.trailingAnchor.constraint(equalTo: whatLabel.trailingAnchor),
-            whatTable.bottomAnchor.constraint(equalTo: whoTable.bottomAnchor),
+            whereTable.topAnchor.constraint(equalTo: whereLabel.bottomAnchor, constant: margin),
+            whereTable.leadingAnchor.constraint(equalTo: whereLabel.leadingAnchor),
+            whereTable.trailingAnchor.constraint(equalTo: whereLabel.trailingAnchor),
+            whereTable.bottomAnchor.constraint(equalTo: whoTable.bottomAnchor),
         ].activate()
         
         let customWhoEntry = UmbyTextField(title: "Enter your own", delegate: self)
@@ -76,10 +76,10 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
         let customWhatEntry = UmbyTextField(title: "Enter your own", delegate: self)
         view.addSubview(customWhatEntry)
         [
-            customWhatEntry.topAnchor.constraint(equalTo: whatTable.bottomAnchor, constant: margin),
+            customWhatEntry.topAnchor.constraint(equalTo: whereTable.bottomAnchor, constant: margin),
             customWhatEntry.heightAnchor.constraint(equalToConstant: 60),
-            customWhatEntry.leadingAnchor.constraint(equalTo: whatTable.leadingAnchor),
-            customWhatEntry.trailingAnchor.constraint(equalTo: whatTable.trailingAnchor),
+            customWhatEntry.leadingAnchor.constraint(equalTo: whereTable.leadingAnchor),
+            customWhatEntry.trailingAnchor.constraint(equalTo: whereTable.trailingAnchor),
         ].activate()
         
         let nextButton = UmbyButton(title: "NEXT") {
@@ -144,4 +144,3 @@ extension WhoAndWhereTagSelectorViewController: UITextFieldDelegate {
         }
     }
 }
-
