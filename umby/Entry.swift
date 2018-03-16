@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Entry {
+struct Entry {
     var text: String?
     var tags: [String]
     var furtherConsideration: Bool
@@ -22,5 +22,11 @@ class Entry {
         self.tags = tags
         self.furtherConsideration = furtherConsideration
         self.date = date
+    }
+}
+
+extension Entry {
+    func tagString() -> String {
+        return tags.map { tag in "#\(tag)" }.joined(separator: ", ")
     }
 }

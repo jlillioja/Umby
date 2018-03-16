@@ -57,6 +57,9 @@ class EntryCreationNavigationController: UINavigationController, NavigationManag
         if let index = viewControllers.index(of: textEntryViewController) {
             self.viewControllers.remove(at: index)
         }
+        if let index = entryCreationViewControllers.index(of: textEntryViewController) {
+            entryCreationViewControllers.remove(at: index)
+        }
         entryCreationViewControllers.append(textEntryViewController)
     }
     

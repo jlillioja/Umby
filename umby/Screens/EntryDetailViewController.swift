@@ -42,7 +42,7 @@ class EntryDetailViewController: UmbyViewController {
             ])
         dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
-        let textScrollView = UIScrollView.init().forCustom()
+        let textScrollView = UIScrollView().forCustom()
         view.addSubview(textScrollView)
         view.addConstraints([
             textScrollView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: margin),
@@ -55,8 +55,8 @@ class EntryDetailViewController: UmbyViewController {
         textLabel.numberOfLines = 0
         textScrollView.encapsulate(textLabel)
         
-        let tagsString = entry.tags.map { tag in"#\(tag)" }.joined(separator: ", ")
-        let tagsLabel = UmbyLabel(tagsString).leftAligned()
+        let tagString = entry.tagString()
+        let tagsLabel = UmbyLabel(tagString).leftAligned()
         view.addSubview(tagsLabel)
         view.addConstraints([
             tagsLabel.topAnchor.constraint(equalTo: textScrollView.bottomAnchor, constant: margin),

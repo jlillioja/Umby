@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
 class SendEntryViewController: UmbyNewEntryViewController {
     override func loadView() {
@@ -24,8 +25,15 @@ class SendEntryViewController: UmbyNewEntryViewController {
         ]
         
         let sendFullEntryButton = UmbyButton(title: "SEND FULL ENTRY") {
-            _ = 1
+            if UmbySendEmailViewController.canSendMail() {
+                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shouldSendFullText: true, delegate: self)
+                self.present(sendMailViewController, animated: true, completion: nil)
+            } else {
+                print("Can't send email")
+            }
+            return ()
         }
+        
         view.addSubview(sendFullEntryButton)
         constraints += [
             sendFullEntryButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
@@ -34,7 +42,13 @@ class SendEntryViewController: UmbyNewEntryViewController {
         ]
         
         let sendTagsOnlyButton = UmbyButton(title: "SEND TAGS ONLY") {
-            _ = 1
+            if UmbySendEmailViewController.canSendMail() {
+                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shouldSendFullText: false, delegate: self)
+                self.present(sendMailViewController, animated: true, completion: nil)
+            } else {
+                print("Can't send email")
+            }
+            return ()
         }
         view.addSubview(sendTagsOnlyButton)
         constraints += [
@@ -44,7 +58,9 @@ class SendEntryViewController: UmbyNewEntryViewController {
         ]
         
         let noButton = UmbyButton(title: "DO NOT SEND") {
-            _ = 1
+            self.navigationManager?.navigateToEntryList()
+            self.newEntryBuilder?.finishEntry()
+            return ()
         }
         view.addSubview(noButton)
         constraints += [
@@ -67,5 +83,14 @@ class SendEntryViewController: UmbyNewEntryViewController {
         ]
         
         constraints.activate()
+    }
+}
+
+extension SendEntryViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: {
+            self.navigationManager?.navigateToEntryList()
+            self.newEntryBuilder?.finishEntry()
+        })
     }
 }

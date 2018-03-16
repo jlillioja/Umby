@@ -15,6 +15,7 @@ protocol NewEntryBuilder {
     func addCustomTag(_ tag: String, forType: TagType)
     func removeTags(_ tags: [String])
     func setFurtherConsideration(_ furtherConsideration: Bool)
+    func getEntry() -> Entry?
     func finishEntry()
 }
 
@@ -76,7 +77,8 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     }
     
     func removeTags(_ tags: [String]) {
-        currentEntry?.tags = currentEntry?.tags.filter { !tags.contains($0)} ?? []
+        let newTags = currentEntry?.tags.filter { !tags.contains($0)} ?? []
+        currentEntry?.tags = newTags
     }
     
     func setFurtherConsideration(_ furtherConsideration: Bool) {
@@ -89,6 +91,10 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
         }
         currentEntry = nil
         print("Now have entries:\n \(entries)")
+    }
+    
+    func getEntry() -> Entry? {
+        return currentEntry
     }
     
     func getEntries(satisfying filter: ((Entry) -> Bool)? = nil) -> [Entry] {

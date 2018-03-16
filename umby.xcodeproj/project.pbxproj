@@ -18,6 +18,7 @@
 		163CDA11204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */; };
 		165283CD2058A20E0046B641 /* UmbyRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */; };
 		165283CF2058BF700046B641 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283CE2058BF700046B641 /* TagType.swift */; };
+		165283D1205B38E40046B641 /* UmbySendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165283D0205B38E40046B641 /* UmbySendEmailViewController.swift */; };
 		1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */; };
 		1652BB762051C9A100AA3D2B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB752051C9A100AA3D2B /* Entry.swift */; };
 		1652BB782051CABB00AA3D2B /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */; };
@@ -59,6 +60,7 @@
 		163CDA10204DEDCF00A073DA /* TypeAndFeelingTagSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAndFeelingTagSelectorViewController.swift; sourceTree = "<group>"; };
 		165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyRadioButtonGroup.swift; sourceTree = "<group>"; };
 		165283CE2058BF700046B641 /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
+		165283D0205B38E40046B641 /* UmbySendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbySendEmailViewController.swift; sourceTree = "<group>"; };
 		1652BB732051A9B600AA3D2B /* EntryListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListNavigationController.swift; sourceTree = "<group>"; };
 		1652BB752051C9A100AA3D2B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				169647DD204F4E400025EDB4 /* UmbyTableViewController.swift */,
 				1652BB7C2051D75300AA3D2B /* UmbyNewEntryViewController.swift */,
 				165283CC2058A20E0046B641 /* UmbyRadioButtonGroup.swift */,
+				165283D0205B38E40046B641 /* UmbySendEmailViewController.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				16666CF8204DF94B00E43007 /* UmbyStyle.swift in Sources */,
 				169647D4204F46820025EDB4 /* UmbyLabel.swift in Sources */,
 				163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */,
+				165283D1205B38E40046B641 /* UmbySendEmailViewController.swift in Sources */,
 				169647CF204F2CFE0025EDB4 /* WhoAndWhereTagSelectorViewController.swift in Sources */,
 				16E1F7F120524430007E5950 /* UmbrellaListViewController.swift in Sources */,
 				169647CA204F208E0025EDB4 /* TagTableViewCell.swift in Sources */,
