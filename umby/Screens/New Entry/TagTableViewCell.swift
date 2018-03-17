@@ -28,9 +28,13 @@ class TagTableViewCell: UITableViewCell {
         [
             text.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: margin),
             text.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: margin),
-            text.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -margin),
+            text.trailingAnchor.constraint(equalTo: accessoryView?.leadingAnchor ?? safeAreaLayoutGuide.trailingAnchor, constant: -margin),
             text.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -margin)
         ].activate()
+    }
+    
+    convenience init(_ tag: Tag?) {
+        self.init(tag?.text ?? "")
     }
     
     required init?(coder aDecoder: NSCoder) {

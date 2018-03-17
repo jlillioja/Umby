@@ -17,6 +17,9 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
     let whereTable = UmbyTable()
     let whoTable = UmbyTable()
     
+    var customWhoEntry: UmbyTextField!
+    var customWhereEntry: UmbyTextField!
+    
     override func loadView() {
         super.loadView()
         
@@ -64,7 +67,7 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
             whereTable.bottomAnchor.constraint(equalTo: whoTable.bottomAnchor),
         ].activate()
         
-        let customWhoEntry = UmbyTextField(title: "Enter your own", delegate: self)
+        customWhoEntry = UmbyTextField(title: "Enter your own", delegate: self)
         view.addSubview(customWhoEntry)
         [
             customWhoEntry.topAnchor.constraint(equalTo: whoTable.bottomAnchor, constant: margin),
@@ -73,13 +76,13 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
             customWhoEntry.trailingAnchor.constraint(equalTo: whoTable.trailingAnchor),
         ].activate()
         
-        let customWhatEntry = UmbyTextField(title: "Enter your own", delegate: self)
-        view.addSubview(customWhatEntry)
+        customWhereEntry = UmbyTextField(title: "Enter your own", delegate: self)
+        view.addSubview(customWhereEntry)
         [
-            customWhatEntry.topAnchor.constraint(equalTo: whereTable.bottomAnchor, constant: margin),
-            customWhatEntry.heightAnchor.constraint(equalToConstant: 60),
-            customWhatEntry.leadingAnchor.constraint(equalTo: whereTable.leadingAnchor),
-            customWhatEntry.trailingAnchor.constraint(equalTo: whereTable.trailingAnchor),
+            customWhereEntry.topAnchor.constraint(equalTo: whereTable.bottomAnchor, constant: margin),
+            customWhereEntry.heightAnchor.constraint(equalToConstant: 60),
+            customWhereEntry.leadingAnchor.constraint(equalTo: whereTable.leadingAnchor),
+            customWhereEntry.trailingAnchor.constraint(equalTo: whereTable.trailingAnchor),
         ].activate()
         
         let nextButton = UmbyButton(title: "NEXT") {
@@ -89,9 +92,9 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
         bottomConstraint = nextButton.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin)
         [
             nextButton.topAnchor.constraint(equalTo: customWhoEntry.bottomAnchor, constant: margin),
-            nextButton.topAnchor.constraint(equalTo: customWhatEntry.bottomAnchor, constant: margin),
+            nextButton.topAnchor.constraint(equalTo: customWhereEntry.bottomAnchor, constant: margin),
             nextButton.leadingAnchor.constraint(equalTo: customWhoEntry.leadingAnchor),
-            nextButton.trailingAnchor.constraint(equalTo: customWhatEntry.trailingAnchor),
+            nextButton.trailingAnchor.constraint(equalTo: customWhereEntry.trailingAnchor),
             bottomConstraint!,
         ].activate()
     }
@@ -104,43 +107,69 @@ extension WhoAndWhereTagSelectorViewController: UmbyTableViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == whoTable) {
-            return tagProvider?.tagsForWho().count ?? 0
+            return tagProvider?.tags(for: .WHO).count ?? 0
         } else {
-            return tagProvider?.tagsForWhere().count ?? 0
+            return tagProvider?.tags(for: .WHERE).count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (tableView == whoTable) {
-            return TagTableViewCell(tagProvider?.tagsForWho()[indexPath.row] ?? "")
+            return TagTableViewCell(tagProvider?.tags(for: .WHO)[indexPath.row].text ?? "")
         } else {
-            return TagTableViewCell(tagProvider?.tagsForWhere()[indexPath.row] ?? "")
+            return TagTableViewCell(tagProvider?.tags(for: .WHERE)[indexPath.row].text ?? "")
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
         selectedCell?.accessoryType = .checkmark
-        newEntryBuilder?.addTag(selectedCell?.tagText)
+        
+        var tag: Tag?
+        if let text = selectedCell?.tagText {
+            if tableView == whoTable {
+                tag = Tag(text: text, type: .WHO)
+            } else {
+                tag = Tag(text: text, type:. WHERE)
+            }
+            newEntryBuilder?.addTag(tag!)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
         selectedCell?.accessoryType = .none
-        newEntryBuilder?.removeTag(selectedCell?.tagText)
+        
+        var tag: Tag?
+        if let text = selectedCell?.tagText {
+            if tableView == whoTable {
+                tag = Tag(text: text, type: .WHO)
+            } else {
+                tag = Tag(text: text, type:. WHERE)
+            }
+            newEntryBuilder?.removeTag(tag!)
+        }
     }
 }
 
 extension WhoAndWhereTagSelectorViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let text = textField.text {
-            newEntryBuilder?.removeTag(text)
+            if textField == customWhoEntry {
+                newEntryBuilder?.removeCustomTag(Tag(text: text, type: .WHO))
+            } else {
+                newEntryBuilder?.removeCustomTag(Tag(text: text, type:. WHERE))
+            }
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
-            newEntryBuilder?.addTag(text)
+            if textField == customWhoEntry {
+                newEntryBuilder?.addCustomTag(Tag(text: text, type: .WHO))
+            } else {
+                newEntryBuilder?.addCustomTag(Tag(text: text, type:. WHERE))
+            }
         }
     }
 }

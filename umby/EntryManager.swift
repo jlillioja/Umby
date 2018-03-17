@@ -7,29 +7,28 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 protocol NewEntryBuilder {
     func beginNewEntry()
     func setText(_ text: String)
-    func addTags(_ tags: [String])
-    func addCustomTag(_ tag: String, forType: TagType)
-    func removeTags(_ tags: [String])
-    func setFurtherConsideration(_ furtherConsideration: Bool)
+    func addTag(_ tag: Tag)
+    func addCustomTag(_ tag: Tag)
+    func removeTag(_ tag: Tag)
+    func removeCustomTag(_ tag: Tag)
+    func setPriority(_ priority: Priority)
     func getEntry() -> Entry?
     func finishEntry()
 }
 
 extension NewEntryBuilder {
-    func addTag(_ tag: String?) {
-        if (tag != nil) {
-            addTags([tag!])
-        }
+    func addTag(_ text: String, type: TagType) {
+        addTag(Tag(text: text, type: type))
     }
     
-    func removeTag(_ tag: String?) {
-        if (tag != nil) {
-            removeTags([tag!])
-        }
+    func addCustomTag(_ tag: String, forType key: TagType) {
+        addCustomTag(Tag(text: tag, type: key))
     }
 }
 
@@ -39,25 +38,43 @@ protocol EntryProvider {
 
 extension EntryProvider {
     func getUmbrellaEntries() -> [Entry] {
-        return getEntries(satisfying: { $0.furtherConsideration })
+        return getEntries(satisfying: { $0.priority == .HIGH })
     }
     
     func getRaindropEntries() -> [Entry] {
-        return getEntries(satisfying: { !$0.furtherConsideration })
+        return getEntries(satisfying: { $0.priority != .HIGH })
     }
 }
 
 protocol TagProvider {
-    func tagsForType() -> [String]
-    func tagsForFeelings() -> [String]
-    func tagsForWho() -> [String]
-    func tagsForWhere() -> [String]
+    func tags(for tag: TagType) -> [Tag]
 }
 
 class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     
     var entries: [Entry] = []
+    private var entryEntities: [EntryEntity] = []
     var currentEntry: Entry?
+    
+    static let defaultTags: [Tag] =
+        ["Calm", "Angry", "Prepared", "Unprepared", "Happy", "Sad", "Confident", "Afraid", "Proud", "Embarrassed" ]
+            .map { tagString in Tag(text: tagString, type: .FEELING) } +
+            ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought", "Note"]
+                .map { tagString in Tag(text: tagString, type: .TYPE) } +
+            ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Child", "Significant Other"]
+                .map { tagString in Tag(text: tagString, type: .WHO) } +
+            ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"]
+                .map { tagString in Tag(text: tagString, type: .WHERE) }
+    
+    var customTags: [Tag] = []
+    
+    let coreDataContext: NSManagedObjectContext?
+    
+    init() {
+        coreDataContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        refreshEntries()
+        refreshTags()
+    }
     
     func beginNewEntry() {
         currentEntry = Entry()
@@ -67,31 +84,63 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
         currentEntry?.text = text
     }
     
-    func addTags(_ tags: [String]) {
-        currentEntry?.tags.append(contentsOf: tags)
+    func addTag(_ tag: Tag) {
+        currentEntry?.tags.append(tag)
     }
     
-    func addCustomTag(_ tag: String, forType key: TagType) {
-        tags[key]?.append(tag)
+    func addCustomTag(_ tag: Tag) {
+        customTags.append(tag)
         addTag(tag)
     }
     
-    func removeTags(_ tags: [String]) {
-        let newTags = currentEntry?.tags.filter { !tags.contains($0)} ?? []
+    func removeTag(_ tag: Tag) {
+        let newTags = currentEntry?.tags.filter { $0 != tag } ?? []
         currentEntry?.tags = newTags
     }
     
-    func setFurtherConsideration(_ furtherConsideration: Bool) {
-        currentEntry?.furtherConsideration = furtherConsideration
+    func removeCustomTag(_ tag: Tag) {
+        removeTag(tag)
+    }
+    
+    func setPriority(_ priority: Priority) {
+        currentEntry?.priority = priority
     }
     
     func finishEntry() {
-        if (currentEntry != nil) {
+        if let context = coreDataContext, currentEntry != nil {
             entries.append(currentEntry!)
+            do {
+                entryEntities.append(currentEntry!.toEntity(with: context))
+                try context.save()
+            } catch let error as NSError {
+                print("Cannot save right now:\n\(error)")
+            }
+        } else {
+            print("Cannot save right now")
         }
         currentEntry = nil
-        print("Now have entries:\n \(entries)")
+        refreshEntries()
+        print("Now have entries:\n\(entries)")
     }
+    
+    private func refreshEntries() {
+        do {
+            entryEntities = try (coreDataContext?.fetch(NSFetchRequest<NSManagedObject>(entityName: "Entry"))) as! [EntryEntity]
+            entries = entryEntities.flatMap { $0.toEntry() }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    private func refreshTags() {
+        do {
+            let tagEntities = try (coreDataContext?.fetch(NSFetchRequest<NSManagedObject>(entityName: "Tag"))) as! [TagEntity]
+            customTags = tagEntities.flatMap { $0.toTag() }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     
     func getEntry() -> Entry? {
         return currentEntry
@@ -105,25 +154,7 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
         }
     }
     
-    var tags: [TagType: [String]] = [
-        TagType.FEELING : ["Calm", "Angry", "Prepared", "Unprepared", "Happy", "Sad", "Confident", "Afraid", "Proud", "Embarrassed" ],
-        TagType.TYPE : ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought", "Note"],
-        TagType.WHO : ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Stranger", "Significant Other"],
-        TagType.WHERE : ["Home", "Work", "Hotel", "Restaurant", "Public Transit", "Gym", "School", "Everywhere"],
-        ]
-    
-    func tagsForType() -> [String] {
-        return tags[.TYPE] ?? []
-    }
-    
-    func tagsForFeelings() -> [String] {
-        return tags[.FEELING] ?? []
-    }
-    
-    func tagsForWho() -> [String] {
-        return tags[.WHO] ?? []
-    }
-    func tagsForWhere() -> [String] {
-        return tags[.WHERE] ?? []
+    func tags(for tag: TagType) -> [Tag] {
+        return (EntryManager.defaultTags + customTags).filter { $0.type == tag }
     }
 }

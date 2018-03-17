@@ -8,9 +8,10 @@
 
 import Foundation
 
-enum TagType {
-    case TYPE
-    case FEELING
-    case WHO
-    case WHERE
+enum TagType: String {
+    case TYPE = "type"
+    case FEELING = "feeling"
+    case WHO = "who"
+    case WHERE = "where"
+    case UNKNOWN = ""
 }

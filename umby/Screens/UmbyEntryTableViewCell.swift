@@ -54,7 +54,7 @@ class UmbyEntryTableViewCell: UITableViewCell {
             textLabel.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
         ])
         
-        let tagsString = entry.tags.map { tag in"#\(tag)" }.joined(separator: ", ")
+        let tagsString = entry.tags.map { tag in"#\(tag.text)" }.joined(separator: ", ")
         let tagsLabel = UmbyLabel(tagsString).small().leftAligned()
         addSubview(tagsLabel)
         addConstraints([

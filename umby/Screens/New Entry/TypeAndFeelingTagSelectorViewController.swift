@@ -95,50 +95,70 @@ extension TypeAndFeelingTagSelectorViewController: UmbyTableViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == typeTable) {
-            return tagProvider?.tagsForType().count ?? 0
+            return tagProvider?.tags(for: .TYPE).count ?? 0
         } else {
-            return tagProvider?.tagsForFeelings().count ?? 0
+            return tagProvider?.tags(for: .FEELING).count ?? 0
         }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (tableView == typeTable) {
-            return TagTableViewCell(tagProvider?.tagsForType()[indexPath.row] ?? "")
+            return TagTableViewCell(tagProvider?.tags(for: .TYPE)[indexPath.row])
         } else {
-            return TagTableViewCell(tagProvider?.tagsForFeelings()[indexPath.row] ?? "")
+            return TagTableViewCell(tagProvider?.tags(for: .FEELING)[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
         selectedCell?.accessoryType = .checkmark
-        newEntryBuilder?.addTag(selectedCell?.tagText)
+        
+        var tag: Tag?
+        if let text = selectedCell?.tagText {
+            if tableView == typeTable {
+                tag = Tag(text: text, type: .TYPE)
+            } else {
+                tag = Tag(text: text, type:. FEELING)
+            }
+            newEntryBuilder?.addTag(tag!)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as? TagTableViewCell
         selectedCell?.accessoryType = .none
-        newEntryBuilder?.removeTag(selectedCell?.tagText)
+        
+        var tag: Tag?
+        if let text = selectedCell?.tagText {
+            if tableView == typeTable {
+                tag = Tag(text: text, type: .TYPE)
+            } else {
+                tag = Tag(text: text, type:. FEELING)
+            }
+            newEntryBuilder?.removeTag(tag!)
+        }
     }
 }
 
 extension TypeAndFeelingTagSelectorViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let text = textField.text {
-            newEntryBuilder?.removeTag(text)
+            if textField == customTypeEntry {
+                newEntryBuilder?.removeCustomTag(Tag(text: text, type: .TYPE))
+            } else {
+                newEntryBuilder?.removeCustomTag(Tag(text: text, type: .FEELING))
+            }
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var type: TagType?
-        if (textField == customTypeEntry) {
-            type = .TYPE
-        } else {
-            type = .FEELING
-        }
         if let text = textField.text {
-            newEntryBuilder?.addCustomTag(text, forType: type!)
+            if textField == customTypeEntry {
+                newEntryBuilder?.addCustomTag(Tag(text: text, type: .TYPE))
+            } else {
+                newEntryBuilder?.addCustomTag(Tag(text: text, type: .FEELING))
+            }
         }
     }
 }

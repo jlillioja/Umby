@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ConsiderationSelectorViewController: UmbyNewEntryViewController {
+class PrioritySelectorViewController: UmbyNewEntryViewController {
     override func loadView() {
         super.loadView()
         
@@ -60,19 +60,19 @@ class ConsiderationSelectorViewController: UmbyNewEntryViewController {
         yesButton.tap {
             maybeButton.deselect()
             noButton.deselect()
-            self.newEntryBuilder?.setFurtherConsideration(true)
+            self.newEntryBuilder?.setPriority(.HIGH)
         }
         
         maybeButton.tap {
             yesButton.deselect()
             noButton.deselect()
-            self.newEntryBuilder?.setFurtherConsideration(false)
+            self.newEntryBuilder?.setPriority(.MEDIUM)
         }
         
         noButton.tap {
             yesButton.deselect()
             maybeButton.deselect()
-            self.newEntryBuilder?.setFurtherConsideration(false)
+            self.newEntryBuilder?.setPriority(.LOW)
         }
     }
 }

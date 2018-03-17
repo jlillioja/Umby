@@ -66,7 +66,7 @@ class EntryCreationNavigationController: UINavigationController, NavigationManag
     var textEntryViewController: TextEntryViewController!
     var typeAndFeelingTagSelectorViewController: TypeAndFeelingTagSelectorViewController!
     var whoAndWhereTagSelectorViewController: WhoAndWhereTagSelectorViewController!
-    var considerationSelectorViewController: ConsiderationSelectorViewController!
+    var considerationSelectorViewController: PrioritySelectorViewController!
     var sendEntryViewController: SendEntryViewController!
     var entryCreationViewControllers: [UmbyNewEntryViewController] = []
     
@@ -78,7 +78,7 @@ class EntryCreationNavigationController: UINavigationController, NavigationManag
         textEntryViewController = TextEntryViewController()
         typeAndFeelingTagSelectorViewController = TypeAndFeelingTagSelectorViewController()
         whoAndWhereTagSelectorViewController = WhoAndWhereTagSelectorViewController()
-        considerationSelectorViewController = ConsiderationSelectorViewController()
+        considerationSelectorViewController = PrioritySelectorViewController()
         sendEntryViewController = SendEntryViewController()
         
         entryCreationViewControllers = [
