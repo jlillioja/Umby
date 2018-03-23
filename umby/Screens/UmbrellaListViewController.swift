@@ -9,6 +9,12 @@
 import Foundation
 
 class UmbrellaListViewController: EntryListViewController {
+    
+    override var tableTitle: String {
+        get {
+            return "Considerations"
+        }
+    }
 
     override func entries() -> [Entry] {
         return entryProvider?.getUmbrellaEntries() ?? []

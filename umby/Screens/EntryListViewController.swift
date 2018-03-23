@@ -11,6 +11,12 @@ import UIKit
 
 class EntryListViewController: UmbyViewController {
     
+    open var tableTitle: String {
+        get {
+            return "Notes"
+        }
+    }
+    
     var entryProvider: EntryProvider?
     func entries() -> [Entry] {
         return entryProvider?.getEntries(satisfying: { _ in return true }) ?? []
@@ -23,18 +29,24 @@ class EntryListViewController: UmbyViewController {
         
         view.backgroundColor = UmbyColors.white
         let layoutGuide = view.safeAreaLayoutGuide
+        let titleLabel = UmbyLabel(tableTitle).textColor(UmbyColors.blue)
+        view.addSubview(titleLabel)
+        [
+            titleLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+            titleLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+            titleLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin)
+        ].activate()
+        
         
         entryList = UmbyTable(self)
         view.addSubview(entryList)
         entryList.backgroundColor = UmbyColors.blue
-        let constraints = [
-            entryList.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+        [
+            entryList.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: margin),
             entryList.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             entryList.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
             entryList.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -margin),
-        ]
-        
-        constraints.activate()
+        ].activate()
     }
     
     override func viewWillAppear(_ animated: Bool) {

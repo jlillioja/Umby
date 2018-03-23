@@ -21,6 +21,7 @@ class UmbyLabel: UILabel {
         forCustom()
         
         textColor = UmbyColors.white
+        adjustsFontSizeToFitWidth = true
         font = .systemFont(ofSize: 24.0)
         setContentHuggingPriority(.defaultHigh, for: .vertical)
         textAlignment = .center
@@ -34,6 +35,11 @@ class UmbyLabel: UILabel {
     
     func leftAligned() -> Self {
         textAlignment = .left
+        return self
+    }
+    
+    func textColor(_ color: UIColor) -> Self {
+        textColor = color
         return self
     }
     

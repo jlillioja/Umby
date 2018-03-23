@@ -9,7 +9,13 @@
 import Foundation
 
 class RaindropsListViewController: EntryListViewController {
-    
+
+    override var tableTitle: String {
+        get {
+            return "Raindrops"
+        }
+    }
+
     override func entries() -> [Entry] {
         return entryProvider?.getRaindropEntries() ?? []
     }
