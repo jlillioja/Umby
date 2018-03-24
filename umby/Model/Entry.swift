@@ -37,7 +37,7 @@ extension Entry {
         entity.createdAt = date
         entity.priority = priority.rawValue
         tags.forEach { tag in
-            let tagEntity = tag.toEntity(with: context)
+            let tagEntity = tag.newOrExistingEntity(with: context)
             entity.addToTags(tagEntity)
         }
         

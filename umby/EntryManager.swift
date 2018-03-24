@@ -125,7 +125,7 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     
     private func refreshEntries() {
         do {
-            entryEntities = try (coreDataContext?.fetch(NSFetchRequest<NSManagedObject>(entityName: "Entry"))) as! [EntryEntity]
+            entryEntities = (try (coreDataContext?.fetch(NSFetchRequest<EntryEntity>(entityName: "Entry"))))!
             entries = entryEntities.flatMap { $0.toEntry() }
         } catch let error as NSError {
             print(error)
@@ -134,8 +134,8 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     
     private func refreshTags() {
         do {
-            let tagEntities = try (coreDataContext?.fetch(NSFetchRequest<NSManagedObject>(entityName: "Tag"))) as! [TagEntity]
-            customTags = tagEntities.flatMap { $0.toTag() }
+            let tagEntities = try (coreDataContext?.fetch(NSFetchRequest<TagEntity>(entityName: "Tag"))) as! [TagEntity]
+                customTags = tagEntities.flatMap { $0.toTag() }.filteringDuplicates()
         } catch let error as NSError {
             print(error)
         }

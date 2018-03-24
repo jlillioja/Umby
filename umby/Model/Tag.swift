@@ -16,19 +16,43 @@ struct Tag {
 }
 
 extension Tag {
-    func toEntity(with context: NSManagedObjectContext) -> TagEntity {
-        let entity = TagEntity(context: context)
-        entity.text = text
-        entity.type = type.rawValue
-        return entity
+    func newOrExistingEntity(with context: NSManagedObjectContext) -> TagEntity {
+        var existingEntry: TagEntity? = nil
+        do {
+            let request = NSFetchRequest<TagEntity>(entityName: "Tag")
+            request.predicate = NSPredicate(
+                format: "(text == %@) && (type == %@)",
+                text,
+                type.rawValue)
+            existingEntry = try (context.fetch(request)).first
+        } catch let error as NSError {
+            
+        }
+        
+        if let entry = existingEntry {
+            return entry
+        } else {
+            let entity = TagEntity(context: context)
+            entity.text = text
+            entity.type = type.rawValue
+            return entity
+        }
     }
 }
 
 extension Tag: Equatable {
     static func ==(lhs: Tag, rhs: Tag) -> Bool {
         return lhs.text == rhs.text
-        && lhs.type == rhs.type
+            && lhs.type == rhs.type
     }
+}
+
+extension Tag: Hashable {
+    var hashValue: Int {
+        return "\(self.type): \(self.text)".hashValue
+    }
+    
+    
 }
 
 extension TagEntity {

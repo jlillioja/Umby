@@ -14,3 +14,9 @@ extension Array where Element: NSLayoutConstraint {
         NSLayoutConstraint.activate(self)
     }
 }
+
+extension Array where Element : Hashable {
+    func filteringDuplicates() -> [Element] {
+        return Array(Set(self))
+    }
+}
