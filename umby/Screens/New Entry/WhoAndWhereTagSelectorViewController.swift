@@ -25,18 +25,18 @@ class WhoAndWhereTagSelectorViewController: UmbyNewEntryViewController {
         
         let layoutGuide = view.safeAreaLayoutGuide
         
-        let label = UmbyLabel("What are you thinking?")
-        view.addSubview(label)
-        [
-            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
-            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
-            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
-        ].activate()
+//        let label = UmbyLabel("What are you thinking?")
+//        view.addSubview(label)
+//        [
+//            label.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+//            label.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+//            label.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
+//        ].activate()
         
         let whoLabel = UmbyLabel("WHO")
         view.addSubview(whoLabel)
         [
-            whoLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
+            whoLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
             whoLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
         ].activate()
         

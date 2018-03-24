@@ -59,7 +59,7 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     static let defaultTags: [Tag] =
         ["Calm", "Angry", "Prepared", "Unprepared", "Happy", "Sad", "Confident", "Afraid", "Proud", "Embarrassed" ]
             .map { tagString in Tag(text: tagString, type: .FEELING) } +
-            ["Idea", "Complaint", "Vision/Dream", "Worry", "Problem", "General Thought", "Note"]
+            ["Idea", "Complaint", "Vision", "Dream", "Worry", "Problem", "General Thought", "Note"]
                 .map { tagString in Tag(text: tagString, type: .TYPE) } +
             ["Myself", "Parent", "Sibling", "Friend", "Boss", "Coworker", "Child", "Significant Other"]
                 .map { tagString in Tag(text: tagString, type: .WHO) } +

@@ -26,14 +26,13 @@ class SendEntryViewController: UmbyNewEntryViewController {
         
         let sendFullEntryButton = UmbyButton(title: "SEND FULL ENTRY") {
             if UmbySendEmailViewController.canSendMail() {
-                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shouldSendFullText: true, delegate: self)
+                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shareType: .FULL, delegate: self)
                 self.present(sendMailViewController, animated: true, completion: nil)
             } else {
                 print("Can't send email")
             }
             return ()
         }
-        
         view.addSubview(sendFullEntryButton)
         constraints += [
             sendFullEntryButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),
@@ -41,9 +40,25 @@ class SendEntryViewController: UmbyNewEntryViewController {
             sendFullEntryButton.trailingAnchor.constraint(equalTo: label.trailingAnchor),
         ]
         
+        let sendTextOnlyButton = UmbyButton(title: "SEND TEXT ONLY") {
+            if UmbySendEmailViewController.canSendMail() {
+                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shareType: .TEXT, delegate: self)
+                self.present(sendMailViewController, animated: true, completion: nil)
+            } else {
+                print("Can't send email")
+            }
+            return ()
+        }
+        view.addSubview(sendTextOnlyButton)
+        constraints += [
+            sendTextOnlyButton.topAnchor.constraint(equalTo: sendFullEntryButton.bottomAnchor, constant: margin),
+            sendTextOnlyButton.leadingAnchor.constraint(equalTo: sendFullEntryButton.leadingAnchor),
+            sendTextOnlyButton.trailingAnchor.constraint(equalTo: sendFullEntryButton.trailingAnchor)
+        ]
+        
         let sendTagsOnlyButton = UmbyButton(title: "SEND TAGS ONLY") {
             if UmbySendEmailViewController.canSendMail() {
-                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shouldSendFullText: false, delegate: self)
+                let sendMailViewController = UmbySendEmailViewController(entry: self.newEntryBuilder!.getEntry()!, shareType: .TAGS, delegate: self)
                 self.present(sendMailViewController, animated: true, completion: nil)
             } else {
                 print("Can't send email")
@@ -52,9 +67,9 @@ class SendEntryViewController: UmbyNewEntryViewController {
         }
         view.addSubview(sendTagsOnlyButton)
         constraints += [
-            sendTagsOnlyButton.topAnchor.constraint(equalTo: sendFullEntryButton.bottomAnchor, constant: margin),
-            sendTagsOnlyButton.leadingAnchor.constraint(equalTo: sendFullEntryButton.leadingAnchor),
-            sendTagsOnlyButton.trailingAnchor.constraint(equalTo: sendFullEntryButton.trailingAnchor),
+            sendTagsOnlyButton.topAnchor.constraint(equalTo: sendTextOnlyButton.bottomAnchor, constant: margin),
+            sendTagsOnlyButton.leadingAnchor.constraint(equalTo: sendTextOnlyButton.leadingAnchor),
+            sendTagsOnlyButton.trailingAnchor.constraint(equalTo: sendTextOnlyButton.trailingAnchor),
         ]
         
         let noButton = UmbyButton(title: "DO NOT SEND") {
