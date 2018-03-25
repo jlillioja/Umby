@@ -51,9 +51,18 @@ class EntryDetailViewController: UmbyViewController {
         ])
         textScrollView.setContentHuggingPriority(.defaultLow, for: .vertical)
         
+        let contentView = UIView().forCustom()
+        textScrollView.addSubview(contentView)
+        view.addConstraints([
+            contentView.topAnchor.constraint(equalTo: textScrollView.topAnchor),
+            contentView.widthAnchor.constraint(equalTo: textScrollView.widthAnchor),
+            contentView.leadingAnchor.constraint(equalTo: textScrollView.leadingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: textScrollView.bottomAnchor),
+        ])
+        
         let textLabel = UmbyLabel(entry.text ?? "").leftAligned()
         textLabel.numberOfLines = 0
-        textScrollView.encapsulate(textLabel)
+        contentView.encapsulate(textLabel)
         
         let tagString = entry.tagString()
         let tagsLabel = UmbyLabel(tagString).leftAligned()

@@ -47,6 +47,7 @@ class UmbyEntryTableViewCell: UITableViewCell {
         
         let textLabel = UmbyLabel(entry.text ?? "").small().leftAligned()
         textLabel.numberOfLines = 1
+        textLabel.adjustsFontSizeToFitWidth = false
         addSubview(textLabel)
         addConstraints([
             textLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: margin),
