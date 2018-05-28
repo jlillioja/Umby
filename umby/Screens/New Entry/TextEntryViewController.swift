@@ -27,7 +27,7 @@ class TextEntryViewController: UmbyNewEntryViewController {
         textBox.delegate = self
         textBox.backgroundColor = UmbyColors.white
         textBox.layer.cornerRadius = UmbyStyle.smallCornerRadius
-        textBox.font = .systemFont(ofSize: 24.0)
+        textBox.font = UmbyStyle.font
         view.addSubview(textBox)
         [
             textBox.topAnchor.constraint(equalTo: label.bottomAnchor, constant: margin),

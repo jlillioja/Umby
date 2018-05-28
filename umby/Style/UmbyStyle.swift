@@ -18,6 +18,8 @@ struct UmbyStyle {
     }
     
     static let smallCornerRadius: CGFloat = 5
+    
+    static let font: UIFont = UIFont(name: "Comic Sans MS", size: 24)!
 }
 
 typealias UmbyColors = UmbyStyle.colors

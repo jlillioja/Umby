@@ -22,6 +22,7 @@ class TagTableViewCell: UITableViewCell {
         
         let text = UILabel().forCustom()
         text.text = tagText
+        text.font = UmbyStyle.font
         text.textAlignment = .center
         text.adjustsFontSizeToFitWidth = true
         addSubview(text)

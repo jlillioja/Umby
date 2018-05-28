@@ -28,5 +28,6 @@ class UmbyTextField: UITextField {
         (value(forKey: "_placeholderLabel") as? UILabel)?.adjustsFontSizeToFitWidth = true
         backgroundColor = UmbyColors.white
         layer.cornerRadius = UmbyStyle.smallCornerRadius
+        font = UmbyStyle.font
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162AF1C020A7F0E4000F05BF /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162AF1BF20A7F0E4000F05BF /* Comic Sans MS.ttf */; };
 		163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F0204DDD4B00A073DA /* AppDelegate.swift */; };
 		163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */; };
 		163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		162AF1BF20A7F0E4000F05BF /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS.ttf"; sourceTree = "<group>"; };
 		163CD9ED204DDD4B00A073DA /* umby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = umby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		163CD9F0204DDD4B00A073DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		162AF1C120A7F0FD000F05BF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				162AF1BF20A7F0E4000F05BF /* Comic Sans MS.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		163CD9E4204DDD4B00A073DA = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 		163CD9EF204DDD4B00A073DA /* umby */ = {
 			isa = PBXGroup;
 			children = (
+				162AF1C120A7F0FD000F05BF /* fonts */,
 				165C811E205C477E0097D2A5 /* Model */,
 				169647E72051A6F40025EDB4 /* Navigation */,
 				169647D2204F465E0025EDB4 /* Style */,
@@ -298,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162AF1C020A7F0E4000F05BF /* Comic Sans MS.ttf in Resources */,
 				169A43E5205268F800B6D248 /* Assets.xcassets in Resources */,
 				169A43E32052612F00B6D248 /* Main.storyboard in Resources */,
 			);

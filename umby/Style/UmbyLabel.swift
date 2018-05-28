@@ -22,14 +22,14 @@ class UmbyLabel: UILabel {
         
         textColor = UmbyColors.white
         adjustsFontSizeToFitWidth = true
-        font = .systemFont(ofSize: 24.0)
         setContentHuggingPriority(.defaultHigh, for: .vertical)
         textAlignment = .center
         numberOfLines = 0
+        font = UmbyStyle.font
     }
     
     func small() -> Self {
-        font = .systemFont(ofSize: 12.0)
+        font = font.withSize(12)
         return self
     }
     
