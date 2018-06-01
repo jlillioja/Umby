@@ -37,6 +37,11 @@ class UmbyButton: UIButton {
         }
     }
     
+    func small() -> Self {
+        self.titleLabel?.font = UmbyStyle.font.withSize(12)
+        return self
+    }
+    
     func select() {
         backgroundColor = UmbyColors.grey
     }

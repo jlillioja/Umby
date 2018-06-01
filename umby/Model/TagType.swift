@@ -9,9 +9,15 @@
 import Foundation
 
 enum TagType: String {
-    case TYPE = "type"
-    case FEELING = "feeling"
-    case WHO = "who"
-    case WHERE = "where"
+    case TYPE = "Type"
+    case FEELING = "Feeling"
+    case WHO = "Who"
+    case WHERE = "Where"
     case UNKNOWN = ""
+}
+
+extension TagType {
+    static func all() -> [TagType] {
+        return [TagType.TYPE, TagType.FEELING, TagType.WHO, TagType.WHERE]
+    }
 }

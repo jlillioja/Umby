@@ -47,6 +47,7 @@ class RootNavigationController: UITabBarController, NavigationManager {
         
         umbrellaEntriesListViewController.navigationManager = self
         umbrellaEntriesListViewController.entryProvider = entryManager
+        umbrellaEntriesListViewController.tagProvider = entryManager
         
         raindropEntriesListViewController.navigationManager = self
         raindropEntriesListViewController.entryProvider = entryManager
