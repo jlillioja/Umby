@@ -19,7 +19,8 @@ class EntryListViewController: UmbyViewController {
     
     var entryProvider: EntryProvider?
     func entries() -> [Entry] {
-        return entryProvider?.getEntries(satisfying: { _ in return true }) ?? []
+        return entryProvider?.getEntries(satisfying: { _ in return true      
+        }) ?? []
     }
     
     var tagProvider: TagProvider!
@@ -77,6 +78,8 @@ class EntryListViewController: UmbyViewController {
     override func viewWillAppear(_ animated: Bool) {
         entryList.reloadData()
     }
+    
+    var tagFilterList: [Tag] = []
 }
 
 extension EntryListViewController: UmbyTableViewController {
@@ -108,19 +111,26 @@ extension EntryListViewController: UmbyTableViewController {
         if (tableView == entryList) {
             return UmbyEntryTableViewCell(entry: entries()[indexPath.row])
         } else {
-            let cell =  UITableViewCell.init()
-            let label = UILabel.init()
-            cell.textLabel?.text = tagProvider.tags(for: TagType.all()[indexPath.section])[indexPath.row].text
-            return cell
+            return UmbyTagTableViewCell(tag: tagProvider.tags(for: TagType.all()[indexPath.section])[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (tableView == entryList) {
-        navigationManager?.navigateToEntryDetail(entries()[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
+            navigationManager?.navigateToEntryDetail(entries()[indexPath.row])
+            tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            
+            tableView.deselectRow(at: indexPath, animated: true)
+            let cell = (tableView.cellForRow(at: indexPath) as! UmbyTagTableViewCell)
+            if (tagFilterList.contains(cell.entryTag)) {
+                cell.accessoryType = .none
+                tagFilterList.remove(at: tagFilterList.index(of: cell.entryTag)!)
+                entryList.reloadData()
+            } else {
+                cell.accessoryType = .checkmark
+                tagFilterList.append(cell.entryTag)
+                entryList.reloadData()
+            }
         }
     }
 }

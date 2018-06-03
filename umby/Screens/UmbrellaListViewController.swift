@@ -17,7 +17,7 @@ class UmbrellaListViewController: EntryListViewController {
     }
 
     override func entries() -> [Entry] {
-        return entryProvider?.getUmbrellaEntries() ?? []
+        return entryProvider?.getEntries(priority: .HIGH, including: tagFilterList) ?? []
     }
     
 }

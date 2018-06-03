@@ -17,7 +17,7 @@ class RaindropsListViewController: EntryListViewController {
     }
 
     override func entries() -> [Entry] {
-        return entryProvider?.getRaindropEntries() ?? []
+        return entryProvider?.getEntries(priority: Priority.LOW, including: tagFilterList) ?? []
     }
     
 }

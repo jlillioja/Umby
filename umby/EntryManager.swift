@@ -44,6 +44,17 @@ extension EntryProvider {
     func getRaindropEntries() -> [Entry] {
         return getEntries(satisfying: { $0.priority != .HIGH })
     }
+    
+    func getEntries(priority: Priority, including tags: [Tag]) -> [Entry] {
+        return getEntries(satisfying: { entry in
+            guard entry.priority == priority else { return false }
+            var hasAllTags = true
+            tags.forEach { tag in
+                hasAllTags = entry.tags.contains(tag) && hasAllTags
+            }
+            return hasAllTags
+        })
+    }
 }
 
 protocol TagProvider {
@@ -126,7 +137,7 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     private func refreshEntries() {
         do {
             entryEntities = (try (coreDataContext?.fetch(NSFetchRequest<EntryEntity>(entityName: "Entry"))))!
-            entries = entryEntities.flatMap { $0.toEntry() }
+            entries = entryEntities.compactMap { $0.toEntry() }
         } catch let error as NSError {
             print(error)
         }
@@ -135,7 +146,7 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     private func refreshTags() {
         do {
             let tagEntities = try (coreDataContext?.fetch(NSFetchRequest<TagEntity>(entityName: "Tag"))) as! [TagEntity]
-                customTags = tagEntities.flatMap { $0.toTag() }.filteringDuplicates()
+            customTags = tagEntities.compactMap { $0.toTag() }.filteringDuplicates()
         } catch let error as NSError {
             print(error)
         }

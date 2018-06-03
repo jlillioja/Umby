@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		162AF1C020A7F0E4000F05BF /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162AF1BF20A7F0E4000F05BF /* Comic Sans MS.ttf */; };
+		162EB74E20C1DF1F001F0050 /* UmbyTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162EB74D20C1DF1F001F0050 /* UmbyTagTableViewCell.swift */; };
 		163CD9F1204DDD4B00A073DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F0204DDD4B00A073DA /* AppDelegate.swift */; };
 		163CD9F3204DDD4B00A073DA /* TextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */; };
 		163CD9F9204DDD4B00A073DA /* umby.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163CD9F7204DDD4B00A073DA /* umby.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		162AF1BF20A7F0E4000F05BF /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS.ttf"; sourceTree = "<group>"; };
+		162EB74D20C1DF1F001F0050 /* UmbyTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbyTagTableViewCell.swift; sourceTree = "<group>"; };
 		163CD9ED204DDD4B00A073DA /* umby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = umby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		163CD9F0204DDD4B00A073DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		163CD9F2204DDD4B00A073DA /* TextEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				1652BB772051CABB00AA3D2B /* EntryDetailViewController.swift */,
 				16E1F7F020524430007E5950 /* UmbrellaListViewController.swift */,
 				16E1F7F2205244FD007E5950 /* RaindropsListViewController.swift */,
+				162EB74D20C1DF1F001F0050 /* UmbyTagTableViewCell.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -277,7 +280,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jacob Lillioja";
 				TargetAttributes = {
 					163CD9EC204DDD4B00A073DA = {
@@ -383,6 +386,7 @@
 				163CDA06204DE13C00A073DA /* UIView+.swift in Sources */,
 				169647DC204F4A0F0025EDB4 /* UmbyTable.swift in Sources */,
 				169647DE204F4E400025EDB4 /* UmbyTableViewController.swift in Sources */,
+				162EB74E20C1DF1F001F0050 /* UmbyTagTableViewCell.swift in Sources */,
 				163CDA0F204DECC500A073DA /* RootNavigationController.swift in Sources */,
 				169647E620507BB60025EDB4 /* UmbyEntryTableViewCell.swift in Sources */,
 				1652BB742051A9B600AA3D2B /* EntryListNavigationController.swift in Sources */,
@@ -433,6 +437,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -440,6 +445,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -490,6 +496,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -497,6 +504,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
