@@ -19,6 +19,16 @@ class UmbyButton: UIButton {
         self.init(title: title) { return () }
     }
     
+    var title: String?
+    {
+        get {
+            return self.title(for: .normal)
+        }
+        set {
+            setTitle(newValue, for: .normal)
+        }
+    }
+    
     init(title: String, _ onTap: @escaping (() -> Void?)) {
         super.init(frame: .zero)
         

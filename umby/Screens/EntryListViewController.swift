@@ -27,6 +27,9 @@ class EntryListViewController: UmbyViewController {
     
     var entryList: UmbyTable! = nil
     
+    var filterButton: UmbyButton! = nil
+    let defaultFilterButtonTitle = "Filter by Tag"
+    
     override func loadView() {
         super.loadView()
         
@@ -41,7 +44,7 @@ class EntryListViewController: UmbyViewController {
             titleLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin)
         ].activate()
         
-        let filterButton = UmbyButton(title: "Filter by Tag").small()
+        filterButton = UmbyButton(title: defaultFilterButtonTitle).small()
         view.addSubview(filterButton)
         [
             filterButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: margin),
@@ -121,16 +124,27 @@ extension EntryListViewController: UmbyTableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let cell = (tableView.cellForRow(at: indexPath) as! UmbyTagTableViewCell)
-            if (tagFilterList.contains(cell.entryTag)) {
-                cell.accessoryType = .none
-                tagFilterList.remove(at: tagFilterList.index(of: cell.entryTag)!)
-                entryList.reloadData()
-            } else {
-                cell.accessoryType = .checkmark
-                tagFilterList.append(cell.entryTag)
-                entryList.reloadData()
-            }
+            toggleTagFiltered(for: (tableView.cellForRow(at: indexPath) as! UmbyTagTableViewCell))
+        }
+    }
+    
+    func toggleTagFiltered(for cell: UmbyTagTableViewCell) {
+        if (tagFilterList.contains(cell.entryTag)) {
+            cell.accessoryType = .none
+            tagFilterList.remove(at: tagFilterList.index(of: cell.entryTag)!)
+            entryList.reloadData()
+        } else {
+            cell.accessoryType = .checkmark
+            tagFilterList.append(cell.entryTag)
+            entryList.reloadData()
+        }
+        
+        if (tagFilterList.count == 0) {
+            filterButton.title = defaultFilterButtonTitle
+        } else if (tagFilterList.count == 1) {
+            filterButton.title = tagFilterList[0].text
+        } else {
+            filterButton.title = "\(tagFilterList.count) tags"
         }
     }
 }
