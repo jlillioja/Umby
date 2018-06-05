@@ -45,15 +45,29 @@ extension EntryProvider {
         return getEntries(satisfying: { $0.priority != .HIGH })
     }
     
-    func getEntries(priority: Priority, including tags: [Tag]) -> [Entry] {
+    private func getEntries(priority: Priority, including tags: [Tag]) -> [Entry] {
         return getEntries(satisfying: { entry in
             guard entry.priority == priority else { return false }
-            var hasAllTags = true
-            tags.forEach { tag in
-                hasAllTags = entry.tags.contains(tag) && hasAllTags
+            for tag in tags {
+                if (!entry.tags.contains(tag)) {
+                    return false
+                }
             }
-            return hasAllTags
+            return true
         })
+    }
+    
+    func getEntries(priority: Priority, including tags: [Tag], with searchTerms: [String]) -> [Entry] {
+        return getEntries(priority: priority, including: tags).filter { entry in
+            guard searchTerms.count > 0 else { return true }
+            for term in searchTerms {
+                if ((entry.text?.contains(term) ?? false)
+                    || entry.tags.map {$0.text}.containsAtLeastOne(of: searchTerms)) {
+                    return true
+                }
+            }
+            return false
+        }
     }
 }
 

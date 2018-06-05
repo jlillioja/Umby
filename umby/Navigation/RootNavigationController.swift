@@ -51,6 +51,7 @@ class RootNavigationController: UITabBarController, NavigationManager {
         
         raindropEntriesListViewController.navigationManager = self
         raindropEntriesListViewController.entryProvider = entryManager
+        raindropEntriesListViewController.tagProvider = entryManager
         
         entryListNavigationController.pushViewController(entryListPageViewController, animated: false)
         

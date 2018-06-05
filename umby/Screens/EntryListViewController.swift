@@ -19,8 +19,7 @@ class EntryListViewController: UmbyViewController {
     
     var entryProvider: EntryProvider?
     func entries() -> [Entry] {
-        return entryProvider?.getEntries(satisfying: { _ in return true      
-        }) ?? []
+        return entryProvider?.getEntries(satisfying: { _ in return true }) ?? []
     }
     
     var tagProvider: TagProvider!
@@ -30,24 +29,35 @@ class EntryListViewController: UmbyViewController {
     var filterButton: UmbyButton! = nil
     let defaultFilterButtonTitle = "Filter by Tag"
     
+    var tagFilterList: [Tag] = []
+    var searchFilterList: [String] = []
+    
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = UmbyColors.white
         let layoutGuide = view.safeAreaLayoutGuide
         
+        let searchBar = UmbyTextField(title: "Search notes", delegate: self)
+        view.addSubview(searchBar)
+        [
+            searchBar.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+            searchBar.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
+            searchBar.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin)
+        ].activate()
+        
         let titleLabel = UmbyLabel(tableTitle).textColor(UmbyColors.blue)
         view.addSubview(titleLabel)
         [
-            titleLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+            titleLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: margin),
             titleLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             titleLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin)
         ].activate()
-        
-        filterButton = UmbyButton(title: defaultFilterButtonTitle).small()
+
+        filterButton = UmbyButton(title: defaultFilterButtonTitle)
         view.addSubview(filterButton)
         [
-            filterButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: margin),
+            filterButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: margin),
             filterButton.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: margin),
             filterButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -margin),
         ].activate()
@@ -81,8 +91,6 @@ class EntryListViewController: UmbyViewController {
     override func viewWillAppear(_ animated: Bool) {
         entryList.reloadData()
     }
-    
-    var tagFilterList: [Tag] = []
 }
 
 extension EntryListViewController: UmbyTableViewController {
@@ -146,5 +154,21 @@ extension EntryListViewController: UmbyTableViewController {
         } else {
             filterButton.title = "\(tagFilterList.count) tags"
         }
+    }
+}
+
+extension EntryListViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchFilterList = (textField.text ?? "").split(separator: " ").map { String($0) }
+        resetSearchFilter()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+
+    func resetSearchFilter() {
+        entryList.reloadData()
     }
 }

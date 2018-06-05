@@ -20,3 +20,14 @@ extension Array where Element : Hashable {
         return Array(Set(self))
     }
 }
+
+extension Array where Element : Equatable {
+    func containsAtLeastOne(of array: [Element]) -> Bool {
+        for element in array {
+            if (self.contains(element)) {
+                return true
+            }
+        }
+        return false
+    }
+}

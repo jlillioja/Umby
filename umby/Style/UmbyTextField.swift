@@ -24,10 +24,12 @@ class UmbyTextField: UITextField {
         borderStyle = .roundedRect
         attributedPlaceholder = NSAttributedString(string: title, attributes: [
             NSAttributedStringKey.foregroundColor: UmbyColors.grey
-            ])
+        ])
         (value(forKey: "_placeholderLabel") as? UILabel)?.adjustsFontSizeToFitWidth = true
         backgroundColor = UmbyColors.white
         layer.cornerRadius = UmbyStyle.smallCornerRadius
         font = UmbyStyle.font
+        
+        returnKeyType = .done
     }
 }
