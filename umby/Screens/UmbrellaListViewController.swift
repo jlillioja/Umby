@@ -17,7 +17,19 @@ class UmbrellaListViewController: EntryListViewController {
     }
 
     override func entries() -> [Entry] {
-        return entryProvider?.getEntries(priority: .HIGH, including: tagFilterList, with: searchFilterList) ?? []
+        if (filterWithAllSwitch.isOn) {
+            return entryProvider?.getEntries(priority: .HIGH,
+                                             including: tagFilterList,
+                                             with: searchFilterList) ?? []
+        } else {
+            var allTerms: [String] = Array.init() //searchFilterList.  (contentsOf: tagFilterList.map { $0.text })
+            allTerms.append(contentsOf: searchFilterList)
+            allTerms.append(contentsOf: tagFilterList.map { $0.text })
+            
+            return entryProvider?.getEntries(priority: .HIGH,
+                                             including: [],
+                                             with: allTerms) ?? []
+        }
     }
     
 }

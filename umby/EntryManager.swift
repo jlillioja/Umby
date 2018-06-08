@@ -180,6 +180,6 @@ class EntryManager: NewEntryBuilder, EntryProvider, TagProvider {
     }
     
     func tags(for tag: TagType) -> [Tag] {
-        return (EntryManager.defaultTags + customTags).filter { $0.type == tag }
+        return (EntryManager.defaultTags + customTags).filter { $0.type == tag }.filteringDuplicates()
     }
 }
